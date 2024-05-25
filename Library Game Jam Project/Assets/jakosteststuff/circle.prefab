@@ -129,7 +129,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8803019373ae2c4d97830de5c36d445, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pathPrefabs:
-  - {fileID: 4419367426767234781, guid: 5bbb78a501ed694448bfa7ea6a4b8b18, type: 3}
-  - {fileID: 1433862789419389064, guid: 5e1917050c5405347820ce70af20df96, type: 3}
+  paths:
+  - {fileID: 0}
   speed: 5
