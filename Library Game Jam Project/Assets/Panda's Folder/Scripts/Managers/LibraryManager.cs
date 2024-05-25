@@ -12,6 +12,9 @@ public class LibraryManager : MonoBehaviour
     [SerializeField] private int elderlyStars;
     [SerializeField] private int libraryMemberships;
 
+    [Header("Time Keeping")]
+    [SerializeField] private int currentDay;
+
     private void Awake()
     {
         instance = this;
@@ -62,4 +65,5 @@ public class LibraryManager : MonoBehaviour
     public int GetAdultStarLevel() => adultStars;
     public int GetElderlyStarLevel() => elderlyStars;
     public int GetLibraryMemberships() => libraryMemberships;
+    public int GetCurrentDay() => currentDay;
 }

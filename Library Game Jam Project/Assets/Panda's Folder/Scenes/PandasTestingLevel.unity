@@ -638,7 +638,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 304641256}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &226935092
 MonoBehaviour:
@@ -743,6 +743,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1783678768}
+  - {fileID: 226935091}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &307162408
@@ -6535,17 +6536,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teenUIStars:
-  - {fileID: 223791512}
-  - {fileID: 1492615802}
-  - {fileID: 1990552170}
+  - {fileID: 223791510}
+  - {fileID: 1492615800}
+  - {fileID: 1990552168}
   adultUIStars:
-  - {fileID: 6942758}
-  - {fileID: 1399447856}
-  - {fileID: 1906940324}
+  - {fileID: 6942756}
+  - {fileID: 1399447854}
+  - {fileID: 1906940322}
   elderlyUIStars:
-  - {fileID: 459412813}
-  - {fileID: 1894088041}
-  - {fileID: 571413283}
+  - {fileID: 459412811}
+  - {fileID: 1894088039}
+  - {fileID: 571413281}
 --- !u!1 &1824459214
 GameObject:
   m_ObjectHideFlags: 0
@@ -7609,4 +7610,3 @@ SceneRoots:
   - {fileID: 734627708}
   - {fileID: 462881057}
   - {fileID: 304641256}
-  - {fileID: 226935091}

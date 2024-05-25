@@ -7,9 +7,9 @@ public class InGameUI : MonoBehaviour
 {
     public static InGameUI instance;
 
-    [SerializeField] private Image[] teenUIStars;
-    [SerializeField] private Image[] adultUIStars;
-    [SerializeField] private Image[] elderlyUIStars;
+    [SerializeField] private GameObject[] teenUIStars;
+    [SerializeField] private GameObject[] adultUIStars;
+    [SerializeField] private GameObject[] elderlyUIStars;
 
     private void Awake()
     {
@@ -25,7 +25,7 @@ public class InGameUI : MonoBehaviour
 
     private void UpdateTeenStars()
     {
-        foreach(Image star in teenUIStars)
+        foreach(GameObject star in teenUIStars)
         {
             star.gameObject.SetActive(false);
         }
@@ -38,7 +38,7 @@ public class InGameUI : MonoBehaviour
 
     private void UpdateAdultStars()
     {
-        foreach (Image star in adultUIStars)
+        foreach (GameObject star in adultUIStars)
         {
             star.gameObject.SetActive(false);
         }
@@ -51,7 +51,7 @@ public class InGameUI : MonoBehaviour
 
     private void UpdateElderlyStars()
     {
-        foreach (Image star in elderlyUIStars)
+        foreach (GameObject star in elderlyUIStars)
         {
             star.gameObject.SetActive(false);
         }

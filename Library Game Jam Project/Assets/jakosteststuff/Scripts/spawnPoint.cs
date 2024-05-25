@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class spawnPoint : MonoBehaviour
+public class SpawnPoint : MonoBehaviour
 {
     [Header("spawn objects")]
     [SerializeField] private GameObject[] prefabToSpawn;
