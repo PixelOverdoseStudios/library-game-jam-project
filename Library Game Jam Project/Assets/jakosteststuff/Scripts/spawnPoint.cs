@@ -29,7 +29,7 @@ public class SpawnPoint : MonoBehaviour
                 GameObject randomPrefab = prefabToSpawn[Random.Range(0, prefabToSpawn.Length)];
                 // Instantiate the random prefab
                 Instantiate(randomPrefab, transform.position, transform.rotation);
-                spawnDelay = Random.RandomRange(minSpawnTimer, maxSpawnTimer);
+                spawnDelay = Random.Range(minSpawnTimer, maxSpawnTimer);
                 yield return new WaitForSeconds(spawnDelay);
             }
         }
