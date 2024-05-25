@@ -2,98 +2,90 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-using System.Collections; // Import the namespace for collections
-using System.Collections.Generic; // Import the namespace for generic collections
-using UnityEngine; // Import the Unity Engine namespace
-
-public class FollowPath : MonoBehaviour // Define a class named FollowPath, inheriting from MonoBehaviour
+public class FollowPath : MonoBehaviour
 {
-    [SerializeField] private Transform[] paths; // Array of path objects in the scene
-    [SerializeField] private float speed = 5f; // Speed of movement along the path
-    [SerializeField] private Transform[] waypoints; // Array of waypoints defining the path
-    [SerializeField] private int currentWaypointIndex = 0; // Index of the current waypoint
-    [SerializeField] private string PathTag = "Path"; // Tag to identify path objects
-    [SerializeField] private float waitTimeAtEnd = 2.0f; // Time to wait at the end of the path (adjust as needed)
-    [SerializeField] private float despawnDelay = 2.0f; // Delay before despawning
+    [SerializeField] private Transform[] paths;
+    [SerializeField] private float speed = 5f;
+    [SerializeField] private Transform[] waypoints;
+    [SerializeField] private int currentWaypointIndex = 0;
+    [SerializeField] private string PathTag = "Path";
+    [SerializeField] private float waitTimeAtEnd = 2.0f;
 
-    private bool isWaiting = false; // Flag to indicate if the object is waiting at the end of the path
-    private bool isMovingForward = true; // Flag to indicate the direction of movement along the path
+    private bool isWaiting = false;
+    private bool isMovingForward = true;
+    private bool hasReturned = false; // Flag to indicate if the object has returned to the start
 
-    void Start() // Start is called before the first frame update
+    void Start()
     {
-        InitializePath(); // Initialize the path when the object starts
+        InitializePath();
     }
 
-    void Update() // Update is called once per frame
+    void Update()
     {
-        if (waypoints == null || waypoints.Length == 0) return; // Check if waypoints are not assigned or empty
+        if (waypoints == null || waypoints.Length == 0) return;
 
-        if (!isWaiting) // Check if the object is not waiting
+        if (!isWaiting)
         {
-            MoveToNextWaypoint(); // Move to the next waypoint
+            MoveToNextWaypoint();
         }
     }
 
-    void InitializePath() // Initialize the path objects in the scene
+    void InitializePath()
     {
-        GameObject[] pathObjects = GameObject.FindGameObjectsWithTag(PathTag); // Find all objects with the specified tag
-        List<Transform> pathTransforms = new List<Transform>(); // Create a list to store path transforms
+        GameObject[] pathObjects = GameObject.FindGameObjectsWithTag(PathTag);
+        List<Transform> pathTransforms = new List<Transform>();
 
-        foreach (GameObject pathObject in pathObjects) // Iterate through each path object
+        foreach (GameObject pathObject in pathObjects)
         {
-            pathTransforms.Add(pathObject.transform); // Add the transform of each path object to the list
+            pathTransforms.Add(pathObject.transform);
         }
 
-        paths = pathTransforms.ToArray(); // Convert the list of path transforms to an array
+        paths = pathTransforms.ToArray();
 
-        if (paths.Length > 0) // Check if there are paths in the scene
+        if (paths.Length > 0)
         {
-            SelectRandomPath(); // Select a random path
+            SelectRandomPath();
         }
         else
         {
-            Debug.LogWarning("No paths found in the scene!"); // Log a warning if no paths are found
+            Debug.LogWarning("No paths found in the scene!");
         }
     }
 
-    void SelectRandomPath() // Select a random path from the available paths
+    void SelectRandomPath()
     {
-        Transform pathTransform = paths[Random.Range(0, paths.Length)]; // Select a random path transform
-        Debug.Log(pathTransform.name); // Log the name of the selected path
+        Transform pathTransform = paths[Random.Range(0, paths.Length)];
+        Debug.Log(pathTransform.name);
 
-        Path path = pathTransform.GetComponent<Path>(); // Get the Path component attached to the selected path
-        waypoints = path.GetWaypoints(); // Get the waypoints from the selected path
+        Path path = pathTransform.GetComponent<Path>();
+        waypoints = path.GetWaypoints();
 
-        if (waypoints.Length > 0) // Check if there are waypoints in the selected path
+        if (waypoints.Length > 0)
         {
-            transform.position = waypoints[0].position; // Set the initial position of the object to the first waypoint
+            transform.position = waypoints[0].position;
         }
     }
 
-    void MoveToNextWaypoint() // Move to the next waypoint along the path
+    void MoveToNextWaypoint()
     {
-        int nextWaypointIndex = isMovingForward ? currentWaypointIndex + 1 : currentWaypointIndex - 1; // Calculate the index of the next waypoint
+        int nextWaypointIndex = isMovingForward ? currentWaypointIndex + 1 : currentWaypointIndex - 1;
 
-        // Check if the next waypoint index is within bounds
         if (nextWaypointIndex >= 0 && nextWaypointIndex < waypoints.Length)
         {
-            transform.position = Vector2.MoveTowards(transform.position, waypoints[nextWaypointIndex].position, speed * Time.deltaTime); // Move towards the next waypoint
+            transform.position = Vector2.MoveTowards(transform.position, waypoints[nextWaypointIndex].position, speed * Time.deltaTime);
 
-            // Check if the object has reached the next waypoint
             if (Vector2.Distance(transform.position, waypoints[nextWaypointIndex].position) < 0.1f)
             {
-                currentWaypointIndex = nextWaypointIndex; // Update the current waypoint index
+                currentWaypointIndex = nextWaypointIndex;
 
-                // Check if the object has reached the end of the path
                 if (currentWaypointIndex >= waypoints.Length || currentWaypointIndex < 0)
                 {
-                    StartCoroutine(WaitAtEnd()); // Start waiting at the end of the path
+                    StartCoroutine(WaitAtEnd());
                 }
             }
         }
         else
         {
-            // If the next waypoint index is out of bounds, stop moving until the direction changes or the end of the path is reached
             isWaiting = true;
             StartCoroutine(WaitAtEnd());
         }
@@ -106,20 +98,20 @@ public class FollowPath : MonoBehaviour // Define a class named FollowPath, inhe
         isWaiting = false;
         isMovingForward = !isMovingForward;
 
-        if (isMovingForward)
+        if (!hasReturned && !isMovingForward) // Check if the object has returned and is moving backward
         {
-            currentWaypointIndex = 0;
-        }
-        else
-        {
-            currentWaypointIndex = waypoints.Length - 1;
-            StartCoroutine(DespawnAfterDelay()); // Start the despawn coroutine
+            hasReturned = true;
+            StartCoroutine(DespawnAfterReturn());
         }
     }
 
-    IEnumerator DespawnAfterDelay()
+    IEnumerator DespawnAfterReturn()
     {
-        yield return new WaitForSeconds(despawnDelay); // Wait for the specified delay
-        Destroy(gameObject); // Despawn the object
+        while (currentWaypointIndex != 0) // Wait until the object reaches the first waypoint again
+        {
+            yield return null;
+        }
+
+        Destroy(gameObject);
     }
 }
