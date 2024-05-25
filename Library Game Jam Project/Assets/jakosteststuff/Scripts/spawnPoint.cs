@@ -23,7 +23,7 @@ public class spawnPoint : MonoBehaviour
             for (int i = 0; i < numberOfObjectsToSpawn; i++)
             {
                 Instantiate(prefabToSpawn, transform.position, transform.rotation);
-                yield return new WaitForSeconds(spawnDelay); // Wait for the specified delay before spawning the next object
+                yield return new WaitForSeconds(spawnDelay); 
             }
         }
         else
