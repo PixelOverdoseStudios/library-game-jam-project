@@ -10,6 +10,7 @@ public class FollowPath : MonoBehaviour
     [SerializeField] private int currentWaypointIndex = 0;
     [SerializeField] private string PathTag = "Path";
     [SerializeField] private float waitTimeAtEnd = 2.0f;
+    [SerializeField] private Choise choise;
 
     private bool isWaiting = false;
     private bool isMovingForward = true;
@@ -18,6 +19,15 @@ public class FollowPath : MonoBehaviour
     void Start()
     {
         InitializePath();
+        if (choise == null)
+        {
+            choise = FindObjectOfType<Choise>();
+        }
+
+        if (choise == null)
+        {
+            Debug.LogError("Choise script not found!");
+        }
     }
 
     void Update()
@@ -81,6 +91,7 @@ public class FollowPath : MonoBehaviour
                 if (currentWaypointIndex >= waypoints.Length || currentWaypointIndex < 0)
                 {
                     StartCoroutine(WaitAtEnd());
+                    
                 }
             }
         }
@@ -93,6 +104,7 @@ public class FollowPath : MonoBehaviour
 
     IEnumerator WaitAtEnd()
     {
+        choise.ChoiseToMake();
         isWaiting = true;
         yield return new WaitForSeconds(waitTimeAtEnd);
         isWaiting = false;

@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3384055050161030358}
   - component: {fileID: 8663197969648809255}
+  - component: {fileID: 657792749787199847}
   m_Layer: 0
   m_Name: circle
   m_TagString: Untagged
@@ -132,3 +133,21 @@ MonoBehaviour:
   paths:
   - {fileID: 0}
   speed: 5
+  waypoints: []
+  currentWaypointIndex: 0
+  PathTag: Path
+  waitTimeAtEnd: 2
+  choise: {fileID: 0}
+--- !u!114 &657792749787199847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6939885320877096356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7169c5a56160b2c44bdcd3b181aaa026, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Randomvalue: 0

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5966826155466596887}
   - component: {fileID: 3074434803182829645}
   - component: {fileID: 2191259332701920481}
+  - component: {fileID: -4280244905782066399}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -102,3 +103,18 @@ MonoBehaviour:
   waypoints: []
   currentWaypointIndex: 0
   PathTag: Path
+  waitTimeAtEnd: 2
+  choise: {fileID: 0}
+--- !u!114 &-4280244905782066399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6967770525182518502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7169c5a56160b2c44bdcd3b181aaa026, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomValue: 0
