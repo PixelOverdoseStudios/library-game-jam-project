@@ -151,9 +151,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c0489d29179c624f8e94b4b5b8cf52c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teenStars: 0
-  adultStars: 0
-  elderlyStars: 0
+  teenStars: 10
+  adultStars: 5
+  elderlyStars: 5
   libraryMemberships: 0
   currentDay: 0
   visitorDailyAmount: 15
