@@ -30,8 +30,83 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4579753936995568750}
+  - {fileID: 8882561673834986892}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8084749191098604861
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8882561673834986892}
+  - component: {fileID: 3917592538226200747}
+  - component: {fileID: 7867874932788911143}
+  m_Layer: 0
+  m_Name: SpawnManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8882561673834986892
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8084749191098604861}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.12, y: -0.33, z: 0}
+  m_LocalScale: {x: 24.183048, y: 12.591322, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4456694187883031460}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3917592538226200747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8084749191098604861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 126177591dd08e04f8496dc049761608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teensPrefabs:
+  - {fileID: 6939885320877096356, guid: 508612667d95cfa449708f072a999734, type: 3}
+  adultsPrefabs:
+  - {fileID: 6967770525182518502, guid: 789ff6603bd38ef49a910ffee1e8f172, type: 3}
+  elderlyPrefabs:
+  - {fileID: 6608939809633113454, guid: 5428e4ff710b3ae49936eb27489913cc, type: 3}
+  startSpawnDelay: 1
+  numberOfObjectsToSpawn: 10
+  spawnDelay: 1
+  minSpawnTimer: 1
+  maxSpawnTimer: 3
+  spawnedTeens: 0
+  spawnedAdults: 0
+  spawnedElderly: 0
+--- !u!114 &7867874932788911143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8084749191098604861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dba6c25ec624b1e439424d5f512bfc41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teenSignups: 0
+  adultSignups: 0
+  elderlySignups: 0
 --- !u!1 &8545941588948207716
 GameObject:
   m_ObjectHideFlags: 0
