@@ -68,4 +68,7 @@ public class LibraryManager : MonoBehaviour
     public int GetLibraryMemberships() => libraryMemberships;
     public int GetCurrentDay() => currentDay;
     public int GetVisitorDailyAmount() => visitorDailyAmount;
+
+    //placeholder signup methode
+    public int SetSignups() => libraryMemberships++;
 }
