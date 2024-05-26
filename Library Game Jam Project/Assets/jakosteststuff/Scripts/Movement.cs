@@ -30,7 +30,7 @@ public class Movement : MonoBehaviour
     private void SelectRandomPath(Transform[] paths)
     {
         Transform pathTransform = paths[Random.Range(0, paths.Length)];
-        Debug.Log(pathTransform.name);
+       
 
         Path path = pathTransform.GetComponent<Path>();
         waypoints = path.GetWaypoints();
