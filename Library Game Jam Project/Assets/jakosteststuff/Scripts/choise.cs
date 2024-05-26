@@ -1,32 +1,62 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Choise : MonoBehaviour
 {
-    [SerializeField] float randomValue; // Corrected property declaration
+    [SerializeField] float randomValue;
 
-    // Start is called before the first frame update
     void Start()
     {
-        randomValue = Random.value; // Assign a random value between 0 and 1
+        randomValue = Random.value;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        // Optional: You can update randomValue here if you want to re-evaluate it continuously.
+        // You can update randomValue here if you want to re-evaluate it continuously.
     }
 
-    public void ChoiseToMake()
+    public void ChoiseToMake(NpcController.AgeGroupe ageGroup)
     {
-        if (randomValue < 0.5f)
+        switch (ageGroup)
         {
-            Debug.Log("Staying"); // Corrected the message for consistency
-        }
-        else
-        {
-            Debug.Log("Leaving");
+            case NpcController.AgeGroupe.Teen:
+                // Handle choice for Teen age group
+                if (randomValue < 0.5f)
+                {
+                    SignupManager.instance.IncrementTeenSignups();
+                }
+                else
+                {
+                    Debug.Log("Teen leaving");
+                }
+                break;
+
+            case NpcController.AgeGroupe.Adult:
+                // Handle choice for Adult age group
+                if (randomValue < 0.5f)
+                {
+                    SignupManager.instance.IncrementAdultSignups();
+                }
+                else
+                {
+                    Debug.Log("Adult leaving");
+                }
+                break;
+
+            case NpcController.AgeGroupe.Elderly:
+                // Handle choice for Elderly age group
+                if (randomValue < 0.5f)
+                {
+                    SignupManager.instance.IncrementElderlySignups();
+                }
+                else
+                {
+                    Debug.Log("Elderly leaving");
+                }
+                break;
+
+            default:
+                Debug.LogError("Invalid age group!");
+                break;
         }
     }
 }

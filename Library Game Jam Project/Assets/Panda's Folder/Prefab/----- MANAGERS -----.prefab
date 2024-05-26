@@ -81,4 +81,4 @@ MonoBehaviour:
   elderlyStars: 0
   libraryMemberships: 0
   currentDay: 0
-  visitorDailyAmount: 0
+  visitorDailyAmount: 15

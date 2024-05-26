@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3885759049221772456}
   - component: {fileID: 7283214662260056332}
-  - component: {fileID: -6341534353156072526}
-  - component: {fileID: 9004273924116773767}
+  - component: {fileID: 9186018408257387146}
+  - component: {fileID: 1422230428998752569}
+  - component: {fileID: 1788585200104980088}
   m_Layer: 0
   m_Name: Square (1)
   m_TagString: Untagged
@@ -86,7 +87,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-6341534353156072526
+--- !u!114 &9186018408257387146
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,17 +96,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6608939809633113454}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8803019373ae2c4d97830de5c36d445, type: 3}
+  m_Script: {fileID: 11500000, guid: 811f678ec92d50f408d35d073a4c59f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  paths: []
-  speed: 5
-  waypoints: []
-  currentWaypointIndex: 0
-  PathTag: Path
-  waitTimeAtEnd: 2
-  choise: {fileID: 0}
---- !u!114 &9004273924116773767
+  pathTag: Path
+--- !u!114 &1422230428998752569
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,3 +113,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   randomValue: 0
+--- !u!114 &1788585200104980088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6608939809633113454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e9fc73048d79ac44a02eb1d73d2b874, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ageGrupe: 2
+  speed: 5
+  waitTimeAtEnd: 2
+  movement: {fileID: 0}
+  choise: {fileID: 0}

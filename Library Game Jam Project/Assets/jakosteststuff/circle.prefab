@@ -93,8 +93,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3384055050161030358}
-  - component: {fileID: 8663197969648809255}
-  - component: {fileID: 657792749787199847}
+  - component: {fileID: 7682552765297939322}
+  - component: {fileID: 2735337920849139570}
+  - component: {fileID: 4435540687493524617}
   m_Layer: 0
   m_Name: circle
   m_TagString: Untagged
@@ -118,7 +119,7 @@ Transform:
   - {fileID: 3735162283464987338}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8663197969648809255
+--- !u!114 &7682552765297939322
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -127,18 +128,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6939885320877096356}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8803019373ae2c4d97830de5c36d445, type: 3}
+  m_Script: {fileID: 11500000, guid: 811f678ec92d50f408d35d073a4c59f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  paths:
-  - {fileID: 0}
-  speed: 5
-  waypoints: []
-  currentWaypointIndex: 0
-  PathTag: Path
-  waitTimeAtEnd: 2
-  choise: {fileID: 0}
---- !u!114 &657792749787199847
+  pathTag: Path
+--- !u!114 &2735337920849139570
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -150,4 +144,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7169c5a56160b2c44bdcd3b181aaa026, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Randomvalue: 0
+  randomValue: 0
+--- !u!114 &4435540687493524617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6939885320877096356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e9fc73048d79ac44a02eb1d73d2b874, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  waitTimeAtEnd: 2
+  movement: {fileID: 0}
+  choiseHandler: {fileID: 0}

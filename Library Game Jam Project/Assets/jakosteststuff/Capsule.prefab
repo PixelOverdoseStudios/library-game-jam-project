@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5966826155466596887}
   - component: {fileID: 3074434803182829645}
-  - component: {fileID: 2191259332701920481}
-  - component: {fileID: -4280244905782066399}
+  - component: {fileID: -133255107164676134}
+  - component: {fileID: 7174625570480706000}
+  - component: {fileID: 5170263233874505520}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -86,7 +87,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2191259332701920481
+--- !u!114 &-133255107164676134
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,17 +96,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6967770525182518502}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8803019373ae2c4d97830de5c36d445, type: 3}
+  m_Script: {fileID: 11500000, guid: 811f678ec92d50f408d35d073a4c59f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  paths: []
-  speed: 5
-  waypoints: []
-  currentWaypointIndex: 0
-  PathTag: Path
-  waitTimeAtEnd: 2
-  choise: {fileID: 0}
---- !u!114 &-4280244905782066399
+  pathTag: Path
+--- !u!114 &7174625570480706000
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,3 +113,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   randomValue: 0
+--- !u!114 &5170263233874505520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6967770525182518502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e9fc73048d79ac44a02eb1d73d2b874, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ageGrupe: 1
+  speed: 5
+  waitTimeAtEnd: 2
+  movement: {fileID: 0}
+  choise: {fileID: 0}

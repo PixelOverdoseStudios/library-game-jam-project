@@ -104,7 +104,7 @@ public class FollowPath : MonoBehaviour
 
     IEnumerator WaitAtEnd()
     {
-        choise.ChoiseToMake();
+        //choise.ChoiseToMake();
         isWaiting = true;
         yield return new WaitForSeconds(waitTimeAtEnd);
         isWaiting = false;
