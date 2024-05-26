@@ -16,13 +16,13 @@ public class SpawnPoint : MonoBehaviour
     [SerializeField] private float maxSpawnTimer = 3.0f;
 
     // Awake is called when the script instance is being loaded
-    void Awake()
+    public void Awake()
     {
-        if (Instance == null)
-        {
+       
+        
             Instance = this;
             
-        }
+        
         
     }
 
