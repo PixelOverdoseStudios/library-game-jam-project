@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class SpawnPoint : MonoBehaviour
 {
+    // Singleton instance
+    public static SpawnPoint Instance { get; private set; }
+
     [Header("spawn objects")]
     [SerializeField] private GameObject[] prefabToSpawn;
     [SerializeField] private int numberOfObjectsToSpawn = 1;
@@ -11,6 +14,18 @@ public class SpawnPoint : MonoBehaviour
     [Header("time between spawns")]
     [SerializeField] private float minSpawnTimer = 1.0f;
     [SerializeField] private float maxSpawnTimer = 3.0f;
+
+    // Awake is called when the script instance is being loaded
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            
+        }
+        
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +35,6 @@ public class SpawnPoint : MonoBehaviour
     // Coroutine to spawn prefabs with a delay
     IEnumerator SpawnPrefabsWithDelay()
     {
-        
         if (prefabToSpawn != null && prefabToSpawn.Length > 0)
         {
             for (int i = 0; i < numberOfObjectsToSpawn; i++)
@@ -38,4 +52,5 @@ public class SpawnPoint : MonoBehaviour
             Debug.Log("No object to spawn");
         }
     }
+    public int GetNumberOfObjectsToSpawn => numberOfObjectsToSpawn;
 }
