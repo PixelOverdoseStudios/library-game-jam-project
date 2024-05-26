@@ -126,4 +126,5 @@ public class SpawnPoint : MonoBehaviour
     public int GetSpawnedTeens() => spawnedTeens;
     public int GetSpawnedAdults() => spawnedAdults;
     public int GetSpawnedElderly() => spawnedElderly;
+    public void StartSpawning() => StartCoroutine(SpawnPrefabsWithDelay());
 }
