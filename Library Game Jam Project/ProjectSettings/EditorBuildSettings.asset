@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/jakosteststuff/DialogScenetest.unity
+    guid: ab883a3e5d30f8247ba8449402510fdf
+  - enabled: 1
+    path: Assets/jakosteststuff/jakob test.unity
+    guid: ee87aafdd07b10c4cac326cb182fa68b
   m_configObjects: {}
