@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnPoint : MonoBehaviour
 {
     // Singleton instance
-    public static SpawnPoint Instance { get; private set; }
+    public static SpawnPoint Instance;
 
     [Header("spawn objects")]
     [SerializeField] private GameObject[] prefabToSpawn;
@@ -17,13 +17,8 @@ public class SpawnPoint : MonoBehaviour
 
     // Awake is called when the script instance is being loaded
     public void Awake()
-    {
-       
-        
-            Instance = this;
-            
-        
-        
+    {       
+            Instance = this;       
     }
 
     // Start is called before the first frame update
@@ -52,5 +47,6 @@ public class SpawnPoint : MonoBehaviour
             Debug.Log("No object to spawn");
         }
     }
-    public int GetNumberOfObjectsToSpawn => numberOfObjectsToSpawn;
+
+    public int GetNumberOfObjectsToSpawn() => numberOfObjectsToSpawn;
 }

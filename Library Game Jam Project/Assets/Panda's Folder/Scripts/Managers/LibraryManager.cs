@@ -14,6 +14,7 @@ public class LibraryManager : MonoBehaviour
 
     [Header("Time Keeping")]
     [SerializeField] private int currentDay;
+    [SerializeField] private int visitorDailyAmount = 15;
 
     private void Awake()
     {
@@ -66,4 +67,5 @@ public class LibraryManager : MonoBehaviour
     public int GetElderlyStarLevel() => elderlyStars;
     public int GetLibraryMemberships() => libraryMemberships;
     public int GetCurrentDay() => currentDay;
+    public int GetVisitorDailyAmount() => visitorDailyAmount;
 }
