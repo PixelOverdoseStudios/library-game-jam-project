@@ -24,6 +24,10 @@ public class SpawnPoint : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        
+    }
+    public void Start()
+    {
         spawnTime = DayManager.instance.GetTotalDayTime();
     }
 
