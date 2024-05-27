@@ -71,4 +71,5 @@ public class LibraryManager : MonoBehaviour
 
     //placeholder signup methode
     public int SetSignups() => libraryMemberships++;
+    public void IncrementCurrentday() => currentDay++;
 }

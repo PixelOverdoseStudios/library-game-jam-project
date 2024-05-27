@@ -13,67 +13,61 @@ public class SpawnPoint : MonoBehaviour
     [SerializeField] private List<GameObject> elderlyPrefabs;
     [SerializeField] private float startSpawnDelay = 1.0f;
     [SerializeField] private int numberOfObjectsToSpawn = 1;
-    [SerializeField] private float spawnDelay;
-
-    [Header("Time between spawns")]
-    [SerializeField] private float minSpawnTimer = 1.0f;
-    [SerializeField] private float maxSpawnTimer = 3.0f;
 
     [Header("Spawned Npcs")]
     [SerializeField] private int spawnedTeens = 0;
     [SerializeField] private int spawnedAdults = 0;
     [SerializeField] private int spawnedElderly = 0;
+    private float spawnTime;
 
     // Awake is called when the script instance is being loaded
     private void Awake()
     {
         Instance = this;
+        spawnTime = DayManager.instance.GetTotalDayTime();
     }
 
-    // Start is called before the first frame update
-    private void Start()
+    // Start spawning process
+    public void StartSpawningProcess()
     {
-        StartCoroutine(SpawnPrefabsWithDelay());
+        Debug.Log("Spawn time: " + spawnTime);
+        StartSpawning(); // Start spawning process after setting spawnTime
     }
 
-    // Coroutine to spawn prefabs with a delay
-    private IEnumerator SpawnPrefabsWithDelay()
+    // Coroutine to spawn prefabs randomly within the total spawn time
+    private IEnumerator SpawnPrefabsRandomly()
     {
-        // Initial delay before starting to spawn
-        yield return new WaitForSeconds(startSpawnDelay);
+        Debug.Log("Spawn process started.");
+        float elapsedTime = 0f;
+        int totalSpawned = 0;
 
-        numberOfObjectsToSpawn = LibraryManager.instance.GetVisitorDailyAmount();
-        int totalPrefabsCount = teensPrefabs.Count + adultsPrefabs.Count + elderlyPrefabs.Count;
-
-        if (totalPrefabsCount > 0)
+        while (elapsedTime < spawnTime && totalSpawned < numberOfObjectsToSpawn)
         {
-            for (int i = 0; i < numberOfObjectsToSpawn; i++)
+            float timeUntilNextSpawn = Random.Range(0f, startSpawnDelay);
+            yield return new WaitForSeconds(timeUntilNextSpawn);
+
+            GameObject randomPrefab = GetRandomPrefab(out int category);
+            Instantiate(randomPrefab, transform.position, transform.rotation);
+
+            // Increment the appropriate counter based on the category
+            switch (category)
             {
-                GameObject randomPrefab = GetRandomPrefab(out int category);
-                Instantiate(randomPrefab, transform.position, transform.rotation);
-
-                // Increment the appropriate counter based on the category
-                switch (category)
-                {
-                    case 0:
-                        spawnedTeens++;
-                        break;
-                    case 1:
-                        spawnedAdults++;
-                        break;
-                    case 2:
-                        spawnedElderly++;
-                        break;
-                }
-
-                spawnDelay = Random.Range(minSpawnTimer, maxSpawnTimer);
-                yield return new WaitForSeconds(spawnDelay);
+                case 0:
+                    spawnedTeens++;
+                    break;
+                case 1:
+                    spawnedAdults++;
+                    break;
+                case 2:
+                    spawnedElderly++;
+                    break;
             }
+
+            elapsedTime += timeUntilNextSpawn;
+            totalSpawned++;
         }
-        else
-        {
-            Debug.Log("No object to spawn");
-        }
+
+        Debug.Log("Spawn process ended. Total spawned: " + totalSpawned);
     }
 
     // Get a random prefab from the combined lists
@@ -126,5 +120,10 @@ public class SpawnPoint : MonoBehaviour
     public int GetSpawnedTeens() => spawnedTeens;
     public int GetSpawnedAdults() => spawnedAdults;
     public int GetSpawnedElderly() => spawnedElderly;
-    public void StartSpawning() => StartCoroutine(SpawnPrefabsWithDelay());
+
+    // Start spawning process
+    public void StartSpawning()
+    {
+        StartCoroutine(SpawnPrefabsRandomly());
+    }
 }
