@@ -55,12 +55,6 @@ public class LibraryManager : MonoBehaviour
         }
     }
 
-    //Call this function when you need to add library memberships from another script.
-    public void AddLibraryMemberships(int value)
-    {
-        libraryMemberships += value;
-    }
-
     //Use any of the below functions to get the star value.
     public int GetTeenStarLevel() => teenStars;
     public int GetAdultStarLevel() => adultStars;
@@ -69,7 +63,8 @@ public class LibraryManager : MonoBehaviour
     public int GetCurrentDay() => currentDay;
     public int GetVisitorDailyAmount() => visitorDailyAmount;
 
-    //placeholder signup methode
-    public int SetSignups() => libraryMemberships++;
+
+    //Increments values.
+    public void IncrementLibraryMemberships() => libraryMemberships++;
     public void IncrementCurrentday() => currentDay++;
 }

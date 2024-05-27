@@ -91,7 +91,7 @@ public class Choise : MonoBehaviour
                     break;
             }
 
-            LibraryManager.instance.SetSignups();
+            LibraryManager.instance.IncrementLibraryMemberships();
         }
         else
         {
