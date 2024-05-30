@@ -11,11 +11,21 @@ public class TextChanger : MonoBehaviour
 
     void Start()
     {
-        // Display the first text at the start
-        if (textArray.Length > 0)
+        // Check if displayText and textArray are properly set
+        if (displayText == null)
         {
-            displayText.text = textArray[currentIndex];
+            Debug.LogError("displayText is not assigned!");
+            return;
         }
+
+        if (textArray == null || textArray.Length == 0)
+        {
+            Debug.LogError("textArray is not assigned or empty!");
+            return;
+        }
+
+        // Display the first text at the start
+        displayText.text = textArray[currentIndex];
     }
 
     void Update()

@@ -18,11 +18,12 @@ public class Choise : MonoBehaviour
     [SerializeField]
     List<SignupEntry> signupTable = new List<SignupEntry>()
     {
-        new SignupEntry { starLevel = 0, signupPercentage = 0 },
+        new SignupEntry { starLevel = 0, signupPercentage = 10 },
         new SignupEntry { starLevel = 1, signupPercentage = 30 },
-        new SignupEntry { starLevel = 2, signupPercentage = 40 },
-        new SignupEntry { starLevel = 3, signupPercentage = 50 },
-        new SignupEntry { starLevel = 4, signupPercentage = 60 },
+        new SignupEntry { starLevel = 2, signupPercentage = 50 },
+        new SignupEntry { starLevel = 3, signupPercentage = 60 },
+        new SignupEntry { starLevel = 4, signupPercentage = 80 },
+        new SignupEntry { starLevel = 5, signupPercentage = 100 },
         new SignupEntry { starLevel = 7, signupPercentage = 80 },
         new SignupEntry { starLevel = 8, signupPercentage = 90 },
         new SignupEntry { starLevel = 9, signupPercentage = 95 },
