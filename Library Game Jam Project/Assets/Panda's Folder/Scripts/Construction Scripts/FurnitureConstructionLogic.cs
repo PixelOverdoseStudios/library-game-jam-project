@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BookshelveConstructionLogic : MonoBehaviour
+public class FurnitureConstructionLogic : MonoBehaviour
 {
     [SerializeField] private GameObject[] bookshelveColors;
     [SerializeField] private GameObject[] seatingColors;
