@@ -14,7 +14,7 @@ public class LibraryManager : MonoBehaviour
 
     [Header("Time Keeping")]
     [SerializeField] private int currentDay;
-    [SerializeField] private int visitorDailyAmount = 15;
+    [SerializeField] private int vistorsPerDay = 15;
 
     private void Awake()
     {
@@ -55,13 +55,23 @@ public class LibraryManager : MonoBehaviour
         }
     }
 
+    public void AddVisitorsPerDay(int value)
+    {
+        vistorsPerDay += value;
+    }
+
+    public void SubtractVisitorsPerDay(int value)
+    {
+        vistorsPerDay -= value;
+    }
+
     //Use any of the below functions to get the star value.
     public int GetTeenStarLevel() => teenStars;
     public int GetAdultStarLevel() => adultStars;
     public int GetElderlyStarLevel() => elderlyStars;
     public int GetLibraryMemberships() => libraryMemberships;
     public int GetCurrentDay() => currentDay;
-    public int GetVisitorDailyAmount() => visitorDailyAmount;
+    public int GetVisitorDailyAmount() => vistorsPerDay;
 
 
     //Increments values.

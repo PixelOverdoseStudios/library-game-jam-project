@@ -48,6 +48,9 @@ TagManager:
   - name: Walls
     uniqueID: 13227451
     locked: 0
+  - name: Objects
+    uniqueID: 2504887757
+    locked: 0
   - name: ForeWalls
     uniqueID: 423675515
     locked: 0

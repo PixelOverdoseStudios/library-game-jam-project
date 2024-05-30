@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class InGameUI : MonoBehaviour
 {
@@ -25,7 +22,7 @@ public class InGameUI : MonoBehaviour
 
     private void UpdateTeenStars()
     {
-        foreach(GameObject star in teenUIStars)
+        foreach (GameObject star in teenUIStars)
         {
             star.gameObject.SetActive(false);
         }

@@ -10,8 +10,8 @@ public class CameraMovement : MonoBehaviour
 
     private float zoom;
     private float zoomMultipler = 4f;
-    private float minZoom = 5;
-    private float maxZoom = 12;
+    [SerializeField] private float minZoom = 5;
+    [SerializeField] private float maxZoom = 12;
     private float velocity = 0f;
     private float smoothTime = 0.25f;
 
