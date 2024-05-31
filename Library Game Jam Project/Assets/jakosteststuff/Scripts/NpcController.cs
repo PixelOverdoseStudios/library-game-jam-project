@@ -1,54 +1,48 @@
-
+// NpcController.cs
 using System.Collections;
 using UnityEngine;
- 
 
 [RequireComponent(typeof(Movement))]
-[RequireComponent(typeof(Choise))]
+[RequireComponent(typeof(Choice))]
+[RequireComponent(typeof(AnimationsController))]
 public class NpcController : MonoBehaviour
 {
     [System.Serializable]
-    public enum AgeGroupe { Teen, Adult, Elderly };
-    [SerializeField] public AgeGroupe ageGrupe;
-    [SerializeField] private float speed = 5f;
+    public enum AgeGroup { Teen, Adult, Elderly };
+    [SerializeField] private AgeGroup ageGroup;
     [SerializeField] private float waitTimeAtEnd = 2.0f;
-    [SerializeField] private Movement movement;
-    [SerializeField] private Choise choise;
 
+    private Movement movement;
+    private Choice choice;
     private bool isWaiting = false;
-    private bool isMovingForward = true;
     private bool hasReturned = false;
 
-    void Start()
+    private void Start()
     {
-        if (movement == null)
-        {
-            movement = GetComponent<Movement>();
-        }
-
-        if (choise == null)
-        {
-            choise = FindObjectOfType<Choise>();
-        }
+        movement = GetComponent<Movement>();
+        choice = GetComponent<Choice>(); // Assuming Choice is attached to the same GameObject
 
         if (movement == null)
         {
             Debug.LogError("Movement script not found!");
         }
 
-        if (choise == null)
+        if (choice == null)
         {
-            Debug.LogError("ChoiseHandler script not found!");
+            Debug.LogError("Choice script not found!");
         }
 
         movement.InitializePath();
+
+        
     }
 
-    void Update()
+    private void Update()
     {
+        Debug.Log(ageGroup);
         if (!isWaiting && movement.HasWaypoints())
         {
-            movement.MoveToNextWaypoint(speed, isMovingForward);
+            movement.MoveToNextWaypoint();
             if (movement.ReachedWaypoint())
             {
                 if (movement.IsAtEnd())
@@ -59,22 +53,29 @@ public class NpcController : MonoBehaviour
         }
     }
 
-    IEnumerator WaitAtEnd()
+    private IEnumerator WaitAtEnd()
     {
-        choise.ChoiseToMake(ageGrupe);
+        if (choice != null)
+        {
+            choice.ChooseToMake(ageGroup);
+        }
+        else
+        {
+            Debug.LogError("Choice component is not assigned!");
+        }
         isWaiting = true;
         yield return new WaitForSeconds(waitTimeAtEnd);
         isWaiting = false;
-        isMovingForward = !isMovingForward;
+        movement.ReverseDirection();
 
-        if (!hasReturned && !isMovingForward)
+        if (!hasReturned && !movement.IsMovingForward())
         {
             hasReturned = true;
             StartCoroutine(DespawnAfterReturn());
         }
     }
 
-    IEnumerator DespawnAfterReturn()
+    private IEnumerator DespawnAfterReturn()
     {
         while (!movement.IsAtStart())
         {

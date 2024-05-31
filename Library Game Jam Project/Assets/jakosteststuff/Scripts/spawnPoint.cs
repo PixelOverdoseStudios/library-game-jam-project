@@ -29,6 +29,7 @@ public class SpawnPoint : MonoBehaviour
     public void Start()
     {
         spawnTime = DayManager.instance.GetTotalDayTime();
+        numberOfObjectsToSpawn = LibraryManager.instance.GetVisitorDailyAmount();
     }
 
     // Start spawning process

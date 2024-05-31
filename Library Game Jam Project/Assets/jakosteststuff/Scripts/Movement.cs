@@ -1,11 +1,33 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
     [SerializeField] private string pathTag = "Path";
+    [SerializeField] private float waitTimeAtWaypoint = 1f;
+    [SerializeField] private float moveSpeed = 5f;
+
     private Transform[] waypoints;
     private int currentWaypointIndex = 0;
+    private bool isMovingForward = true;
+    private bool isWaiting = false;
+
+    private void Start()
+    {
+        InitializePath();
+    }
+
+    private void Update()
+    {
+        if (HasWaypoints())
+        {
+            if (!isWaiting)
+            {
+                MoveToNextWaypoint();
+            }
+        }
+    }
 
     public void InitializePath()
     {
@@ -30,7 +52,6 @@ public class Movement : MonoBehaviour
     private void SelectRandomPath(Transform[] paths)
     {
         Transform pathTransform = paths[Random.Range(0, paths.Length)];
-       
 
         Path path = pathTransform.GetComponent<Path>();
         waypoints = path.GetWaypoints();
@@ -46,6 +67,7 @@ public class Movement : MonoBehaviour
     {
         this.waypoints = waypoints;
         currentWaypointIndex = 0;
+        isMovingForward = true;
     }
 
     public bool HasWaypoints()
@@ -53,13 +75,39 @@ public class Movement : MonoBehaviour
         return waypoints != null && waypoints.Length > 0;
     }
 
-    public Transform GetCurrentWaypoint()
+    public void MoveToNextWaypoint()
     {
-        if (HasWaypoints())
+        if (isMovingForward && currentWaypointIndex < waypoints.Length - 1)
         {
-            return waypoints[currentWaypointIndex];
+            Vector2 targetPosition = waypoints[currentWaypointIndex + 1].position;
+            float step = moveSpeed * Time.deltaTime;
+            transform.position = Vector2.MoveTowards(transform.position, targetPosition, step);
+
+            if (Vector2.Distance(transform.position, targetPosition) < 0.1f)
+            {
+                currentWaypointIndex++;
+                StartCoroutine(WaitAtWaypoint());
+            }
         }
-        return null;
+        else if (!isMovingForward && currentWaypointIndex > 0)
+        {
+            Vector2 targetPosition = waypoints[currentWaypointIndex - 1].position;
+            float step = moveSpeed * Time.deltaTime;
+            transform.position = Vector2.MoveTowards(transform.position, targetPosition, step);
+
+            if (Vector2.Distance(transform.position, targetPosition) < 0.1f)
+            {
+                currentWaypointIndex--;
+                StartCoroutine(WaitAtWaypoint());
+            }
+        }
+    }
+
+    private IEnumerator WaitAtWaypoint()
+    {
+        isWaiting = true;
+        yield return new WaitForSeconds(waitTimeAtWaypoint);
+        isWaiting = false;
     }
 
     public bool ReachedWaypoint()
@@ -77,18 +125,13 @@ public class Movement : MonoBehaviour
         return currentWaypointIndex == 0;
     }
 
-    public void MoveToNextWaypoint(float speed, bool isMovingForward)
+    public void ReverseDirection()
     {
-        int nextWaypointIndex = isMovingForward ? currentWaypointIndex + 1 : currentWaypointIndex - 1;
+        isMovingForward = !isMovingForward;
+    }
 
-        if (nextWaypointIndex >= 0 && nextWaypointIndex < waypoints.Length)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, waypoints[nextWaypointIndex].position, speed * Time.deltaTime);
-
-            if (Vector2.Distance(transform.position, waypoints[nextWaypointIndex].position) < 0.1f)
-            {
-                currentWaypointIndex = nextWaypointIndex;
-            }
-        }
+    public bool IsMovingForward()
+    {
+        return isMovingForward;
     }
 }
