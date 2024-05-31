@@ -29,8 +29,8 @@ public class DayManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Subscribe the LibraryManager function to the event
-        OnCountdownFinished += LibraryManager.instance.IncrementCurrentday;
+        
+        
 
         // Initialize the countdown text if it's assigned
         if (countdownText != null)

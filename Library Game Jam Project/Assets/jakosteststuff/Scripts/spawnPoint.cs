@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static DayManager;
 
 public class SpawnPoint : MonoBehaviour
 {
@@ -11,7 +12,6 @@ public class SpawnPoint : MonoBehaviour
     [SerializeField] private List<GameObject> teensPrefabs;
     [SerializeField] private List<GameObject> adultsPrefabs;
     [SerializeField] private List<GameObject> elderlyPrefabs;
-    [SerializeField] private float startSpawnDelay = 1.0f;
     [SerializeField] private int numberOfObjectsToSpawn = 1;
     [SerializeField] private int despawnedCount = 0;
 
@@ -145,7 +145,8 @@ public class SpawnPoint : MonoBehaviour
     private void EndOfDay()
     {
         Debug.Log("End of day");
-        
+        LibraryManager.instance.IncrementCurrentday();
+        despawnedCount = 0;
     }
     public int GetNumberOfObjectsToSpawn() => numberOfObjectsToSpawn;
     public int GetSpawnedTeens() => spawnedTeens;
