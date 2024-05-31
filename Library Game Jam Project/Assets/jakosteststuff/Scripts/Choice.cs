@@ -43,6 +43,13 @@ public class Choice : MonoBehaviour
         }
     }
 
+    public void Update()
+    {
+        teenStarLevel = LibraryManager.instance.GetTeenStarLevel();
+        adultStarLevel = LibraryManager.instance.GetAdultStarLevel();
+        elderlyStarLevel = LibraryManager.instance.GetElderlyStarLevel();
+    }
+
     public void ChooseToMake(NpcController.AgeGroup ageGroup)
     {
         int starLevel = GetStarLevel(ageGroup);
