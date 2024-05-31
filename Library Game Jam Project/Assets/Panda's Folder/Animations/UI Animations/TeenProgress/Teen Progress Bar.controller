@@ -35,7 +35,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 6
-    m_ConditionEvent: teenStarLevel
+    m_ConditionEvent: StarLevel
     m_EventTreshold: 4
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -7417300353644136136}
@@ -129,7 +129,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 6
-    m_ConditionEvent: teenStarLevel
+    m_ConditionEvent: StarLevel
     m_EventTreshold: 3
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4099393142845448075}
@@ -154,7 +154,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 6
-    m_ConditionEvent: teenStarLevel
+    m_ConditionEvent: StarLevel
     m_EventTreshold: 1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6995672145669764470}
@@ -179,7 +179,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 6
-    m_ConditionEvent: teenStarLevel
+    m_ConditionEvent: StarLevel
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 7149065761441503093}
@@ -204,7 +204,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 6
-    m_ConditionEvent: teenStarLevel
+    m_ConditionEvent: StarLevel
     m_EventTreshold: 5
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 6112943682956461118}
@@ -229,7 +229,7 @@ AnimatorController:
   m_Name: Teen Progress Bar
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: teenStarLevel
+  - m_Name: StarLevel
     m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -257,7 +257,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 6
-    m_ConditionEvent: teenStarLevel
+    m_ConditionEvent: StarLevel
     m_EventTreshold: 2
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4802750853684927212}
