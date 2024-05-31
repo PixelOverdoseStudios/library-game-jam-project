@@ -13,6 +13,7 @@ public class SpawnPoint : MonoBehaviour
     [SerializeField] private List<GameObject> elderlyPrefabs;
     [SerializeField] private float startSpawnDelay = 1.0f;
     [SerializeField] private int numberOfObjectsToSpawn = 1;
+    [SerializeField] private int despawnedCount = 0;
 
     [Header("Spawned Npcs")]
     [SerializeField] private int spawnedTeens = 0;
@@ -121,15 +122,36 @@ public class SpawnPoint : MonoBehaviour
 
         return randomPrefab;
     }
+    public void StartSpawning()
+    {
+        StartCoroutine(SpawnPrefabsRandomly());
+    }
 
+    public void NotifyNpcDespawned()
+    {
+        despawnedCount++;
+        CheckEndOfDay();
+    }
+
+    // Check if all NPCs have been spawned and despawned
+    private void CheckEndOfDay()
+    {
+        if (despawnedCount == numberOfObjectsToSpawn)
+        {
+            EndOfDay();
+        }
+    }
+
+    private void EndOfDay()
+    {
+        Debug.Log("End of day");
+        
+    }
     public int GetNumberOfObjectsToSpawn() => numberOfObjectsToSpawn;
     public int GetSpawnedTeens() => spawnedTeens;
     public int GetSpawnedAdults() => spawnedAdults;
     public int GetSpawnedElderly() => spawnedElderly;
 
-    // Start spawning process
-    public void StartSpawning()
-    {
-        StartCoroutine(SpawnPrefabsRandomly());
-    }
+    
+    
 }

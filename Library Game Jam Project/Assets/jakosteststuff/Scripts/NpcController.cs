@@ -82,7 +82,7 @@ public class NpcController : MonoBehaviour
         {
             yield return null;
         }
-
+        SpawnPoint.Instance.NotifyNpcDespawned();
         Destroy(gameObject);
     }
 }
