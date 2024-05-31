@@ -4,7 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Movement))]
 [RequireComponent(typeof(Choice))]
-[RequireComponent(typeof(AnimationsController))]
+
 public class NpcController : MonoBehaviour
 {
     [System.Serializable]
@@ -39,7 +39,7 @@ public class NpcController : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(ageGroup);
+        //Debug.Log(ageGroup);
         if (!isWaiting && movement.HasWaypoints())
         {
             movement.MoveToNextWaypoint();
@@ -57,6 +57,7 @@ public class NpcController : MonoBehaviour
     {
         if (choice != null)
         {
+            
             choice.ChooseToMake(ageGroup);
         }
         else

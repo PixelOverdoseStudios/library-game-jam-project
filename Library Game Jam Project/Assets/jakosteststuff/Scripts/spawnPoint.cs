@@ -24,8 +24,8 @@ public class SpawnPoint : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        
     }
+
     public void Start()
     {
         spawnTime = DayManager.instance.GetTotalDayTime();
@@ -48,7 +48,8 @@ public class SpawnPoint : MonoBehaviour
 
         while (elapsedTime < spawnTime && totalSpawned < numberOfObjectsToSpawn)
         {
-            float timeUntilNextSpawn = Random.Range(0f, startSpawnDelay);
+            float remainingTime = spawnTime - elapsedTime;
+            float timeUntilNextSpawn = Random.Range(0f, remainingTime / (numberOfObjectsToSpawn - totalSpawned));
             yield return new WaitForSeconds(timeUntilNextSpawn);
 
             GameObject randomPrefab = GetRandomPrefab(out int category);

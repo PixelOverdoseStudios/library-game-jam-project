@@ -7,7 +7,7 @@ public class Choice : MonoBehaviour
     [SerializeField] private int teenStarLevel;
     [SerializeField] private int adultStarLevel;
     [SerializeField] private int elderlyStarLevel;
-    [SerializeField] private AnimationsController animationController;
+    [SerializeField] private GameObject SignupCard;
 
     [System.Serializable]
     public class SignupEntry
@@ -36,6 +36,11 @@ public class Choice : MonoBehaviour
     private void Awake()
     {
         randomValue = Random.value * 100;
+        // Ensure SignupCard is assigned
+        if (SignupCard == null)
+        {
+            Debug.LogError("SignupCard is not assigned in the Inspector!");
+        }
     }
 
     public void ChooseToMake(NpcController.AgeGroup ageGroup)
@@ -43,24 +48,25 @@ public class Choice : MonoBehaviour
         int starLevel = GetStarLevel(ageGroup);
         int signupPercentage = GetSignupPercentage(starLevel);
 
-        if (randomValue >= signupPercentage)
+        if (randomValue <= signupPercentage)
         {
+            
             IncrementSignups(ageGroup);
             if (!hasIncrementedLibrary)
             {
                 IncrementLibraryMembership();
                 hasIncrementedLibrary = true;
+                if (SignupCard != null)
+                {
+                   
+                    SignupCard.SetActive(true);
+                    
+                }
+                else
+                {
+                    Debug.LogError("SignupCard is not assigned!");
+                }
             }
-
-            if(animationController != null)
-{
-                animationController.SpawnCardAboveSprite();
-            }
-else
-            {
-                Debug.LogWarning("AnimationController is not assigned!");
-            }
-
         }
         else
         {
@@ -101,6 +107,12 @@ else
 
     private void IncrementSignups(NpcController.AgeGroup ageGroup)
     {
+        if (SignupManager.instance == null)
+        {
+            Debug.LogError("SignupManager instance is not initialized!");
+            return;
+        }
+
         switch (ageGroup)
         {
             case NpcController.AgeGroup.Teen:
@@ -123,6 +135,12 @@ else
 
     private void IncrementLibraryMembership()
     {
+        if (LibraryManager.instance == null)
+        {
+            Debug.LogError("LibraryManager instance is not initialized!");
+            return;
+        }
+
         LibraryManager.instance.IncrementLibraryMemberships();
     }
 }
