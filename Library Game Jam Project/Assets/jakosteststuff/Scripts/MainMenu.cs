@@ -12,11 +12,25 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private Slider VolumeSlider;
     [SerializeField] private GameObject options;
     [SerializeField] private GameObject mainMenu;
+    [SerializeField] private TMP_Text MusicOn;
+
+    private bool bitState = false; // Boolean variable to track the bit state
 
     private void Awake()
     {
         // Initialize the volume slider and text with the saved volume level
         InitializeVolume();
+    }
+    public void Update()
+    {
+        if (SettingsManager.instance.GetSoundOn())
+        {
+            MusicOn.text = "Music On";
+        }
+        else
+        {
+            MusicOn.text = "Music Off";
+        }
     }
 
     // Method to start the game
@@ -65,5 +79,21 @@ public class MainMenu : MonoBehaviour
         float savedVolume = SettingsManager.instance.GetVolumeLevel();
         VolumeSlider.value = savedVolume;
         VolumeText.text = savedVolume.ToString("0");
+    }
+
+    // Method to toggle the bit state
+    public void musicONOff()
+    {
+        SettingsManager.instance.MusicOnOff();
+        if (SettingsManager.instance.GetSoundOn())
+        {
+            MusicOn.text = "Music On";
+        }
+        else
+        {
+            MusicOn.text = "Music Off";
+        }
+
+
     }
 }

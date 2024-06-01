@@ -6,8 +6,8 @@ public class SettingsManager : MonoBehaviour
 
     public bool soundOn = true;
     public float volumeLevel = 0.5f; // This should be between 0 and 1
-
     private const string VolumeKey = "VolumeLevel";
+    private const string SoundOnKey = "SoundOn";
 
     private void Awake()
     {
@@ -16,8 +16,9 @@ public class SettingsManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
 
-            // Load the saved volume level
+            // Load the saved volume level and sound state
             LoadVolume();
+            LoadSoundOnState();
         }
         else
         {
@@ -29,6 +30,7 @@ public class SettingsManager : MonoBehaviour
     {
         // Ensure the audio source volume is set at the start
         ApplyVolume();
+        ApplySoundOnState();
     }
 
     public void SetVolume(float volume)
@@ -67,6 +69,31 @@ public class SettingsManager : MonoBehaviour
         if (audioSource != null)
         {
             audioSource.volume = volumeLevel;
+        }
+    }
+
+    public void MusicOnOff()
+    {
+        soundOn = !soundOn;
+        ApplySoundOnState();
+        // Save the sound state
+        PlayerPrefs.SetInt(SoundOnKey, soundOn ? 1 : 0);
+        PlayerPrefs.Save();
+    }
+
+    public bool GetSoundOn() => soundOn;
+
+    private void LoadSoundOnState()
+    {
+        soundOn = PlayerPrefs.GetInt(SoundOnKey, 1) == 1; // Default is sound on
+    }
+
+    private void ApplySoundOnState()
+    {
+        AudioSource audioSource = GetComponent<AudioSource>();
+        if (audioSource != null)
+        {
+            audioSource.enabled = soundOn;
         }
     }
 }
