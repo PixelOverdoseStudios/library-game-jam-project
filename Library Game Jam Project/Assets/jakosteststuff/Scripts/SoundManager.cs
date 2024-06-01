@@ -15,7 +15,6 @@ public class SoundManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            
         }
         else
         {
@@ -32,7 +31,7 @@ public class SoundManager : MonoBehaviour
         // Apply initial settings from SettingsManager
         ApplySettings();
 
-        if (musicTracks.Count > 0)
+        if (SettingsManager.instance != null && SettingsManager.instance.GetSoundOn() && musicTracks.Count > 0)
         {
             PlayNextTrack();
         }
@@ -41,6 +40,11 @@ public class SoundManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (SettingsManager.instance == null || !SettingsManager.instance.GetSoundOn())
+        {
+            return;
+        }
+
         // Check if the current track has finished playing
         if (!audioSource.isPlaying)
         {
@@ -50,7 +54,10 @@ public class SoundManager : MonoBehaviour
 
     private void PlayNextTrack()
     {
-        if (musicTracks.Count == 0) return;
+        if (SettingsManager.instance == null || !SettingsManager.instance.GetSoundOn() || musicTracks.Count == 0)
+        {
+            return;
+        }
 
         audioSource.clip = musicTracks[currentTrackIndex];
         audioSource.Play();
@@ -63,7 +70,13 @@ public class SoundManager : MonoBehaviour
         if (SettingsManager.instance != null)
         {
             audioSource.volume = SettingsManager.instance.volumeLevel;
-            audioSource.enabled = SettingsManager.instance.soundOn;
+            audioSource.enabled = SettingsManager.instance.GetSoundOn();
+
+            // If music is disabled, stop the audioSource
+            if (!SettingsManager.instance.GetSoundOn())
+            {
+                audioSource.Stop();
+            }
         }
     }
 }

@@ -12,6 +12,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private Slider VolumeSlider;
     [SerializeField] private GameObject options;
     [SerializeField] private GameObject mainMenu;
+    [SerializeField] private GameObject Dialog;
     [SerializeField] private TMP_Text MusicOn;
 
     
@@ -36,7 +37,10 @@ public class MainMenu : MonoBehaviour
     // Method to start the game
     public void StartGame()
     {
-        SceneManager.LoadScene(SceneToLoad);
+        mainMenu.SetActive(false);
+        options.SetActive(false);
+        Dialog.SetActive(true);
+        
     }
 
     // Method to quit the game
