@@ -13,14 +13,16 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject options;
     [SerializeField] private GameObject mainMenu;
 
-    public void Awake()
+    private void Awake()
     {
-        SetVolume();
+        // Initialize the volume slider and text with the saved volume level
+        InitializeVolume();
     }
+
     // Method to start the game
     public void StartGame()
     {
-        SceneManager.LoadScene(SceneToLoad); // Replace "GameScene" with the name of your game scene
+        SceneManager.LoadScene(SceneToLoad);
     }
 
     // Method to quit the game
@@ -31,8 +33,10 @@ public class MainMenu : MonoBehaviour
 
     public void OpenOptions()
     {
+        // Set the slider value to the current volume level when opening options
         VolumeSlider.value = SettingsManager.instance.GetVolumeLevel();
-        SetVolume();
+        VolumeText.text = VolumeSlider.value.ToString("0"); // Update the volume text
+
         mainMenu.SetActive(false);
         options.SetActive(true);
     }
@@ -48,10 +52,18 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(CreditsScene);
     }
 
-    public void SetVolume()
+    public void OnVolumeSliderChanged()
     {
-        
-        VolumeText.text = VolumeSlider.value.ToString();
+        // Update the volume text and set the new volume in the settings manager
+        VolumeText.text = VolumeSlider.value.ToString("0");
         SettingsManager.instance.SetVolume(VolumeSlider.value);
+    }
+
+    private void InitializeVolume()
+    {
+        // Set the slider and text to the saved volume level on initialization
+        float savedVolume = SettingsManager.instance.GetVolumeLevel();
+        VolumeSlider.value = savedVolume;
+        VolumeText.text = savedVolume.ToString("0");
     }
 }
