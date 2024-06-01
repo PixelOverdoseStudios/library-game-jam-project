@@ -14,7 +14,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private TMP_Text MusicOn;
 
-    private bool bitState = false; // Boolean variable to track the bit state
+    
 
     private void Awake()
     {

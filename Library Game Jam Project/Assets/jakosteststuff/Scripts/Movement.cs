@@ -80,8 +80,9 @@ public class Movement : MonoBehaviour
         if (isMovingForward && currentWaypointIndex < waypoints.Length - 1)
         {
             Vector2 targetPosition = waypoints[currentWaypointIndex + 1].position;
+            Vector2 direction = (targetPosition - (Vector2)transform.position).normalized;
             float step = moveSpeed * Time.deltaTime;
-            transform.position = Vector2.MoveTowards(transform.position, targetPosition, step);
+            transform.position = Vector2.MoveTowards(transform.position, (Vector2)transform.position + direction * step, step);
 
             if (Vector2.Distance(transform.position, targetPosition) < 0.1f)
             {
@@ -92,8 +93,9 @@ public class Movement : MonoBehaviour
         else if (!isMovingForward && currentWaypointIndex > 0)
         {
             Vector2 targetPosition = waypoints[currentWaypointIndex - 1].position;
+            Vector2 direction = (targetPosition - (Vector2)transform.position).normalized;
             float step = moveSpeed * Time.deltaTime;
-            transform.position = Vector2.MoveTowards(transform.position, targetPosition, step);
+            transform.position = Vector2.MoveTowards(transform.position, (Vector2)transform.position + direction * step, step);
 
             if (Vector2.Distance(transform.position, targetPosition) < 0.1f)
             {

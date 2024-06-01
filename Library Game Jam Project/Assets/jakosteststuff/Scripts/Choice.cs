@@ -45,9 +45,13 @@ public class Choice : MonoBehaviour
 
     public void Update()
     {
+        if(LibraryManager.instance != null)
+        {
         teenStarLevel = LibraryManager.instance.GetTeenStarLevel();
         adultStarLevel = LibraryManager.instance.GetAdultStarLevel();
         elderlyStarLevel = LibraryManager.instance.GetElderlyStarLevel();
+        }
+        
     }
 
     public void ChooseToMake(NpcController.AgeGroup ageGroup)
@@ -95,7 +99,7 @@ public class Choice : MonoBehaviour
                 return elderlyStarLevel;
 
             default:
-                Debug.LogError("Invalid age group!");
+                Debug.Log("Invalid age group!");
                 return 0;
         }
     }

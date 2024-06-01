@@ -2,8 +2,7 @@
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(Movement))]
-[RequireComponent(typeof(Choice))]
+
 
 public class NpcController : MonoBehaviour
 {
@@ -24,12 +23,12 @@ public class NpcController : MonoBehaviour
 
         if (movement == null)
         {
-            Debug.LogError("Movement script not found!");
+            Debug.Log("Movement script not found!");
         }
 
         if (choice == null)
         {
-            Debug.LogError("Choice script not found!");
+            Debug.Log("Choice script not found!");
         }
 
         movement.InitializePath();
@@ -43,8 +42,8 @@ public class NpcController : MonoBehaviour
 
     private void Update()
     {
-        if (ageGroup != AgeGroup.NPC) // If not NPC, continue with normal behavior
-        {
+         // If not NPC, continue with normal behavior
+        
             if (!isWaiting && movement.HasWaypoints())
             {
                 movement.MoveToNextWaypoint();
@@ -56,7 +55,7 @@ public class NpcController : MonoBehaviour
                     }
                 }
             }
-        }
+        
         // No need to handle NPC behavior here since movement is disabled
     }
 
@@ -68,7 +67,7 @@ public class NpcController : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Choice component is not assigned!");
+            Debug.Log("Choice component is not assigned!");
         }
         isWaiting = true;
         yield return new WaitForSeconds(waitTimeAtEnd);
@@ -88,7 +87,11 @@ public class NpcController : MonoBehaviour
         {
             yield return null;
         }
-        SpawnPoint.Instance.NotifyNpcDespawned();
+        if (SpawnPoint.Instance != null)
+        {
+            SpawnPoint.Instance.NotifyNpcDespawned();
+        }
+        
         Destroy(gameObject);
     }
 }

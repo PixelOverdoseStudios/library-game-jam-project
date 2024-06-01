@@ -26,13 +26,6 @@ public class SettingsManager : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        // Ensure the audio source volume is set at the start
-        ApplyVolume();
-        ApplySoundOnState();
-    }
-
     public void SetVolume(float volume)
     {
         float vol = Mathf.Clamp(volume / 100f, 0f, 1f); // Convert from percentage to 0-1 range and clamp
@@ -42,14 +35,28 @@ public class SettingsManager : MonoBehaviour
         PlayerPrefs.SetFloat(VolumeKey, volumeLevel);
         PlayerPrefs.Save();
 
-        // Apply the new volume immediately
-        ApplyVolume();
+        // Notify the SoundManager to apply the new volume
+        SoundManager.instance?.ApplySettings();
     }
 
     public float GetVolumeLevel()
     {
         return volumeLevel * 100f; // Convert from 0-1 range to percentage
     }
+
+    public void MusicOnOff()
+    {
+        soundOn = !soundOn;
+
+        // Save the sound state
+        PlayerPrefs.SetInt(SoundOnKey, soundOn ? 1 : 0);
+        PlayerPrefs.Save();
+
+        // Notify the SoundManager to apply the new sound state
+        SoundManager.instance?.ApplySettings();
+    }
+
+    public bool GetSoundOn() => soundOn;
 
     private void LoadVolume()
     {
@@ -63,37 +70,8 @@ public class SettingsManager : MonoBehaviour
         }
     }
 
-    private void ApplyVolume()
-    {
-        AudioSource audioSource = GetComponent<AudioSource>();
-        if (audioSource != null)
-        {
-            audioSource.volume = volumeLevel;
-        }
-    }
-
-    public void MusicOnOff()
-    {
-        soundOn = !soundOn;
-        ApplySoundOnState();
-        // Save the sound state
-        PlayerPrefs.SetInt(SoundOnKey, soundOn ? 1 : 0);
-        PlayerPrefs.Save();
-    }
-
-    public bool GetSoundOn() => soundOn;
-
     private void LoadSoundOnState()
     {
         soundOn = PlayerPrefs.GetInt(SoundOnKey, 1) == 1; // Default is sound on
-    }
-
-    private void ApplySoundOnState()
-    {
-        AudioSource audioSource = GetComponent<AudioSource>();
-        if (audioSource != null)
-        {
-            audioSource.enabled = soundOn;
-        }
     }
 }
