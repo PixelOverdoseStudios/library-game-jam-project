@@ -8,7 +8,7 @@ using UnityEngine;
 public class NpcController : MonoBehaviour
 {
     [System.Serializable]
-    public enum AgeGroup { Teen, Adult, Elderly };
+    public enum AgeGroup { Teen, Adult, Elderly, NPC };
     [SerializeField] private AgeGroup ageGroup;
     [SerializeField] private float waitTimeAtEnd = 2.0f;
 
@@ -34,30 +34,36 @@ public class NpcController : MonoBehaviour
 
         movement.InitializePath();
 
-        
+        // Disable movement for NPC at the start
+        if (ageGroup == AgeGroup.NPC)
+        {
+            movement.enabled = false;
+        }
     }
 
     private void Update()
     {
-        //Debug.Log(ageGroup);
-        if (!isWaiting && movement.HasWaypoints())
+        if (ageGroup != AgeGroup.NPC) // If not NPC, continue with normal behavior
         {
-            movement.MoveToNextWaypoint();
-            if (movement.ReachedWaypoint())
+            if (!isWaiting && movement.HasWaypoints())
             {
-                if (movement.IsAtEnd())
+                movement.MoveToNextWaypoint();
+                if (movement.ReachedWaypoint())
                 {
-                    StartCoroutine(WaitAtEnd());
+                    if (movement.IsAtEnd())
+                    {
+                        StartCoroutine(WaitAtEnd());
+                    }
                 }
             }
         }
+        // No need to handle NPC behavior here since movement is disabled
     }
 
     private IEnumerator WaitAtEnd()
     {
         if (choice != null)
         {
-            
             choice.ChooseToMake(ageGroup);
         }
         else
