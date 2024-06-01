@@ -14,7 +14,7 @@ public class SettingsManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
+            
 
             // Load the saved volume level and sound state
             LoadVolume();
