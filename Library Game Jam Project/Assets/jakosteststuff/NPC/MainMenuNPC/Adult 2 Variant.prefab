@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: ageGroup
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1651416453999581142, guid: 20ee7a18286c74b4f800b611d3c45113, type: 3}
+      propertyPath: moveSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5741673356542524900, guid: 20ee7a18286c74b4f800b611d3c45113, type: 3}
       propertyPath: m_Enabled
       value: 0
