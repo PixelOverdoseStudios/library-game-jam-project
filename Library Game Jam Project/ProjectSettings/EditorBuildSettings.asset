@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/jakosteststuff/MainMenuTest.unity
+    guid: f0258b3de1b2f0c4595f67dcb9aa15db
+  - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
@@ -17,7 +20,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/jakosteststuff/Credits.unity
     guid: 051829e6d20dc8e4a9f588c202b02d85
-  - enabled: 1
-    path: Assets/jakosteststuff/MainMenuTest.unity
-    guid: f0258b3de1b2f0c4595f67dcb9aa15db
   m_configObjects: {}
