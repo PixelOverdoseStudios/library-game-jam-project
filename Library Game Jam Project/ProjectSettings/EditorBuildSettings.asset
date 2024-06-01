@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/jakosteststuff/jakob test.unity
     guid: ee87aafdd07b10c4cac326cb182fa68b
+  - enabled: 1
+    path: Assets/jakosteststuff/Credits.unity
+    guid: 051829e6d20dc8e4a9f588c202b02d85
+  - enabled: 1
+    path: Assets/jakosteststuff/MainMenuTest.unity
+    guid: f0258b3de1b2f0c4595f67dcb9aa15db
   m_configObjects: {}
