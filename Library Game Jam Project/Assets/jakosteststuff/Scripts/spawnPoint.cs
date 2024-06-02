@@ -144,9 +144,11 @@ public class SpawnPoint : MonoBehaviour
 
     private void EndOfDay()
     {
+        DayManager.instance.ActivateButton();
         Debug.Log("End of day");
         LibraryManager.instance.IncrementCurrentday();
         despawnedCount = 0;
+        
     }
     public int GetNumberOfObjectsToSpawn() => numberOfObjectsToSpawn;
     public int GetSpawnedTeens() => spawnedTeens;

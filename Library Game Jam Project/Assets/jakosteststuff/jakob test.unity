@@ -1125,15 +1125,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3917592538226200747, guid: 6dcc192d8cd97c24296653a4d8b80dff, type: 3}
       propertyPath: teensPrefabs.Array.size
-      value: 8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3917592538226200747, guid: 6dcc192d8cd97c24296653a4d8b80dff, type: 3}
       propertyPath: adultsPrefabs.Array.size
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3917592538226200747, guid: 6dcc192d8cd97c24296653a4d8b80dff, type: 3}
       propertyPath: elderlyPrefabs.Array.size
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3917592538226200747, guid: 6dcc192d8cd97c24296653a4d8b80dff, type: 3}
       propertyPath: teensPrefabs.Array.data[0]
@@ -1253,7 +1253,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5886210025574353774, guid: 6dcc192d8cd97c24296653a4d8b80dff, type: 3}
       propertyPath: vistorsPerDay
-      value: 25
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

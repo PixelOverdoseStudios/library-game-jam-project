@@ -70,7 +70,7 @@ public class Choice : MonoBehaviour
                 if (SignupCard != null)
                 {
                    
-                    SignupCard.SetActive(true);
+                   // SignupCard.SetActive(true);
                     
                 }
                 else

@@ -11,10 +11,13 @@ public class DayManager : MonoBehaviour
     [SerializeField] private float countdownTime = 120f; // 5 minutes in seconds
     [SerializeField] private int startTime = 7;
     [SerializeField] private float totalHours = 11;
+    [SerializeField] private GameObject NextDayButton;
+    [SerializeField] private GameObject EndPanel;
     public TMP_Text countdownText; // Reference to a UI Text element to display the countdown
     private float initialCountdownTime; // Store the initial countdown time
     private float totalGameTime; // Total game time in seconds (11 hours)
     private bool isCountdownActive = false; // Flag to check if countdown is active
+    
 
     // Define a delegate and an event
     public delegate void CountdownFinished();
@@ -101,8 +104,15 @@ public class DayManager : MonoBehaviour
         this.StartCountdown();
         SpawnPoint.Instance.StartSpawning();
         SignupManager.instance.resetSignup();
+       NextDayButton.SetActive(false);
     }
+    private void ShowEndOfDayWindow()
+    {
+        EndPanel.SetActive(true);
 
+    }
     public float GetTotalDayTime() => countdownTime;
     public void StartDay() => startgameday();
+    public void ActivateButton () => NextDayButton.SetActive(true);
+    public void EndOfDayPanel() => ShowEndOfDayWindow();
 }

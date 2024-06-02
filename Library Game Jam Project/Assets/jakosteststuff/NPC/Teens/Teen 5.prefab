@@ -97,6 +97,8 @@ GameObject:
   - component: {fileID: 5741673356542524900}
   - component: {fileID: 1097559292032252298}
   - component: {fileID: 433384146418296581}
+  - component: {fileID: -93229596414723165}
+  - component: {fileID: 419495432209635780}
   m_Layer: 0
   m_Name: Teen 5
   m_TagString: Untagged
@@ -134,7 +136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pathTag: Path
   waitTimeAtWaypoint: 1
-  moveSpeed: 5
+  moveSpeed: 1
 --- !u!114 &5741673356542524900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,3 +241,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-93229596414723165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6430324817140764607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fde7f42d7f7cf8d4c9540e47e1f047dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &419495432209635780
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6430324817140764607}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 65f94de60aa9db44aa609c7a68b70b57, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

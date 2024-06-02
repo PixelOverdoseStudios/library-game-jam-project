@@ -12,10 +12,12 @@ public class Movement : MonoBehaviour
     private int currentWaypointIndex = 0;
     private bool isMovingForward = true;
     private bool isWaiting = false;
+    private AnimationController animationController;
 
     private void Start()
     {
         InitializePath();
+        animationController = GetComponent<AnimationController>();
     }
 
     private void Update()
@@ -80,9 +82,8 @@ public class Movement : MonoBehaviour
         if (isMovingForward && currentWaypointIndex < waypoints.Length - 1)
         {
             Vector2 targetPosition = waypoints[currentWaypointIndex + 1].position;
-            Vector2 direction = (targetPosition - (Vector2)transform.position).normalized;
             float step = moveSpeed * Time.deltaTime;
-            transform.position = Vector2.MoveTowards(transform.position, (Vector2)transform.position + direction * step, step);
+            transform.position = Vector2.MoveTowards(transform.position, targetPosition, step);
 
             if (Vector2.Distance(transform.position, targetPosition) < 0.1f)
             {
@@ -93,15 +94,18 @@ public class Movement : MonoBehaviour
         else if (!isMovingForward && currentWaypointIndex > 0)
         {
             Vector2 targetPosition = waypoints[currentWaypointIndex - 1].position;
-            Vector2 direction = (targetPosition - (Vector2)transform.position).normalized;
             float step = moveSpeed * Time.deltaTime;
-            transform.position = Vector2.MoveTowards(transform.position, (Vector2)transform.position + direction * step, step);
+            transform.position = Vector2.MoveTowards(transform.position, targetPosition, step);
 
             if (Vector2.Distance(transform.position, targetPosition) < 0.1f)
             {
                 currentWaypointIndex--;
                 StartCoroutine(WaitAtWaypoint());
             }
+        }
+        if (animationController != null)
+        {
+            animationController.UpdateDirection((waypoints[currentWaypointIndex].position - transform.position).normalized);
         }
     }
 
@@ -150,5 +154,10 @@ public class Movement : MonoBehaviour
     public bool IsWaiting()
     {
         return isWaiting;
+    }
+
+    public bool IsMoving()
+    {
+        return !isWaiting && (isMovingForward && currentWaypointIndex < waypoints.Length - 1) || (!isMovingForward && currentWaypointIndex > 0);
     }
 }

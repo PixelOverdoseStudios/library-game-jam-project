@@ -23,7 +23,7 @@ public class ButtonScript : MonoBehaviour
     // Method called when the button is clicked
     void OnButtonClick()
     {
-        DayManager.instance.StartCountdown();
-        SpawnPoint.Instance.StartSpawning();
+       SignupManager.instance.ResetDaylySignups();
+        DayManager.instance.StartDay();
     }
 }

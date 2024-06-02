@@ -1,90 +1,64 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class AnimationController : MonoBehaviour
 {
-    private Movement movement;
     private Animator animator;
+    private Movement mover;
 
     private void Start()
     {
-        movement = GetComponent<Movement>();
         animator = GetComponent<Animator>();
-
-        if (movement == null || animator == null)
-        {
-            Debug.LogError("Movement or Animator component not found on " + gameObject.name);
-        }
+        mover = GetComponent<Movement>();
     }
 
-    private void Update()
+    public void UpdateDirection(Vector2 direction)
     {
-        if (movement.HasWaypoints() && !movement.IsWaiting())
+        if (animator == null)
         {
-            Vector2 direction = GetMovementDirection();
-            SetDirectionInteger(direction);
-        }
-        else
-        {
-            ResetDirectionInteger();
-        }
-    }
-
-    private Vector2 GetMovementDirection()
-    {
-        int nextWaypointIndex = movement.IsMovingForward() ? movement.GetCurrentWaypointIndex() + 1 : movement.GetCurrentWaypointIndex() - 1;
-
-        if (nextWaypointIndex >= 0 && nextWaypointIndex < movement.GetWaypoints().Length)
-        {
-            Vector2 currentPosition = transform.position;
-            Vector2 targetPosition = movement.GetWaypoints()[nextWaypointIndex].position;
-            return (targetPosition - currentPosition).normalized;
+            Debug.LogWarning("Animator not found!");
+            return;
         }
 
-        return Vector2.zero;
-    }
-
-    private void SetDirectionInteger(Vector2 direction)
-    {
-        int directionValue = 0; // 0 for idle
-
-        float absX = Mathf.Abs(direction.x);
-        float absY = Mathf.Abs(direction.y);
-
-        if (absX > absY)
+        if (direction.magnitude == 0)
         {
-            directionValue = (direction.x > 0) ? 1 : 2; // Right: 1, Left: 2
-        }
-        else if (absY > absX)
-        {
-            directionValue = (direction.y > 0) ? 3 : 4; // Up: 3, Down: 4
-        }
-        else
-        {
-            directionValue = 0; // Idle when both are equal
+            Debug.Log("Idle");
+            animator.SetInteger("Direction", 0); // Idle
+            return;
         }
 
-        switch (directionValue)
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        angle += 180; // Offset angle to match Unity's coordinate system
+
+        int closestDirection = Mathf.RoundToInt(angle / 45f) % 8;
+        if (closestDirection < 0)
         {
+            closestDirection += 8;
+        }
+
+        switch (closestDirection)
+        {
+            case 0:
             case 1:
+            case 7:
+                Debug.Log("Right");
                 animator.SetInteger("Direction", 1); // Right
                 break;
             case 2:
-                animator.SetInteger("Direction", 2); // Left
-                break;
             case 3:
+                Debug.Log("Up");
                 animator.SetInteger("Direction", 3); // Up
                 break;
             case 4:
+                Debug.Log("Left");
+                animator.SetInteger("Direction", 2); // Left
+                break;
+            case 5:
+            case 6:
+                Debug.Log("Down");
                 animator.SetInteger("Direction", 4); // Down
                 break;
-            default:
-                animator.SetInteger("Direction", 0); // Idle
-                break;
         }
-    }
-
-    private void ResetDirectionInteger()
-    {
-        animator.SetInteger("Direction", 0); // 0 for idle
     }
 }
