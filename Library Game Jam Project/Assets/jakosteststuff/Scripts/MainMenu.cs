@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField] private String SceneToLoad = "DialogScenetest";
+   // [SerializeField] private String SceneToLoad = "DialogScenetest";
     [SerializeField] private String CreditsScene = "Credits";
     [SerializeField] private TMP_Text VolumeText;
     [SerializeField] private Slider VolumeSlider;

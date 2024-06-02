@@ -136,4 +136,19 @@ public class Movement : MonoBehaviour
     {
         return isMovingForward;
     }
+
+    public Transform[] GetWaypoints()
+    {
+        return waypoints;
+    }
+
+    public int GetCurrentWaypointIndex()
+    {
+        return currentWaypointIndex;
+    }
+
+    public bool IsWaiting()
+    {
+        return isWaiting;
+    }
 }

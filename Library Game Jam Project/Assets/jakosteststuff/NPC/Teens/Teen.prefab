@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 1097559292032252298}
   - component: {fileID: 433384146418296581}
   - component: {fileID: 7804734817185385542}
+  - component: {fileID: 2594507650464558782}
   m_Layer: 0
   m_Name: Teen
   m_TagString: Untagged
@@ -135,7 +136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pathTag: Path
   waitTimeAtWaypoint: 1
-  moveSpeed: 3
+  moveSpeed: 1
 --- !u!114 &5741673356542524900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,7 +251,7 @@ Animator:
   m_GameObject: {fileID: 6430324817140764607}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 14769ede7a5da464593e87f88269d4fc, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -261,3 +262,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2594507650464558782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6430324817140764607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fde7f42d7f7cf8d4c9540e47e1f047dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
