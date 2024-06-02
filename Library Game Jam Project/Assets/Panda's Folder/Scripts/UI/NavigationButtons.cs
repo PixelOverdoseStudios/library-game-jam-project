@@ -9,7 +9,10 @@ public class NavigationButtons : MonoBehaviour
 
     public void EnableAndDisablingButtons()
     {
-        buttonsToEnable.SetActive(true);
-        buttonsToDisable.SetActive(false);
+        if (buttonsToEnable != null)
+            buttonsToEnable.SetActive(true);
+
+        if (buttonsToDisable != null)
+            buttonsToDisable.SetActive(false);
     }
 }
