@@ -24,6 +24,13 @@ public class SignupManager : MonoBehaviour
     {
         
     }
+    public void ResetDaylySignups() 
+    {
+        teenSignups = 0;
+        adultSignups = 0;
+        elderlySignups = 0;
+    }
+
     public void IncrementTeenSignups()
     {
         teenSignups++;
@@ -42,6 +49,7 @@ public class SignupManager : MonoBehaviour
     public int GetTeenSignups => teenSignups;
     public int GetAdultSignups => adultSignups;
     public int GetElderlySignups => elderlySignups;
+    public void resetSignup() => ResetDaylySignups();
 
 
 }
