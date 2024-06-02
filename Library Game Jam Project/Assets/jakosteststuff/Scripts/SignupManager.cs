@@ -46,9 +46,9 @@ public class SignupManager : MonoBehaviour
         elderlySignups++;
     }
 
-    public int GetTeenSignups => teenSignups;
-    public int GetAdultSignups => adultSignups;
-    public int GetElderlySignups => elderlySignups;
+    public int GetTeenSignups() => teenSignups;
+    public int GetAdultSignups() => adultSignups;
+    public int GetElderlySignups() => elderlySignups;
     public void resetSignup() => ResetDaylySignups();
 
 
