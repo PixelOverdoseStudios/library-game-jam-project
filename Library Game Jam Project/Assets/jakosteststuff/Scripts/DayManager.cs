@@ -96,6 +96,13 @@ public class DayManager : MonoBehaviour
 
         return string.Format("{0:00}:{1:00} {2}", hours, minutes, period);
     }
+    private void startgameday()
+    {
+        this.StartCountdown();
+        SpawnPoint.Instance.StartSpawning();
+        SignupManager.instance.resetSignup();
+    }
 
     public float GetTotalDayTime() => countdownTime;
+    public void StartDay() => startgameday();
 }
