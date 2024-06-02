@@ -8,13 +8,14 @@ public class Furinature : MonoBehaviour
     [SerializeField] private int teenValue;
     [SerializeField] private int adultValue;
     [SerializeField] private int elderlyValue;
+    [SerializeField] private int vistorValue;
 
     private void OnEnable()
     {
         LibraryManager.instance.AddStarLevel(teenValue, 0);
         LibraryManager.instance.AddStarLevel(adultValue, 1);
         LibraryManager.instance.AddStarLevel(elderlyValue, 2);
-        InGameUI.instance.UpdateUI();
+        LibraryManager.instance.AddVisitorsPerDay(vistorValue);
     }
     
     private void OnDisable()
@@ -22,6 +23,6 @@ public class Furinature : MonoBehaviour
         LibraryManager.instance.SubtractStarLevel(teenValue, 0);
         LibraryManager.instance.SubtractStarLevel(adultValue, 1);
         LibraryManager.instance.SubtractStarLevel(elderlyValue, 2);
-        InGameUI.instance.UpdateUI();
+        LibraryManager.instance.SubtractVisitorsPerDay(vistorValue);
     }
 }
