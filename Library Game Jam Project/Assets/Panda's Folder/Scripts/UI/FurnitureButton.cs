@@ -6,9 +6,9 @@ public class FurnitureButton : MonoBehaviour
 {
     [SerializeField] private GameObject[] furniture;
 
-    public void ChooseTeenFurinature() => UpdateFurniture(0);
-    public void ChooseAdultFurinature() => UpdateFurniture(1);
-    public void ChooseElderlyFurinature() => UpdateFurniture(2);
+    public void FurnitureOption1() => UpdateFurniture(0);
+    public void FurnitureOption2() => UpdateFurniture(1);
+    public void FurnitureOption3() => UpdateFurniture(2);
 
     private void UpdateFurniture(int choice)
     {
