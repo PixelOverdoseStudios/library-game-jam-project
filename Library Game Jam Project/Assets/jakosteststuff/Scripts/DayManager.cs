@@ -100,6 +100,7 @@ public class DayManager : MonoBehaviour
     {
         this.StartCountdown();
         SpawnPoint.Instance.StartSpawning();
+        SignupManager.instance.resetSignup();
     }
 
     public float GetTotalDayTime() => countdownTime;
