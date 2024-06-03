@@ -8,15 +8,20 @@ public class FurnitureConstructionLogic : MonoBehaviour
     [SerializeField] private GameObject[] seatingColors;
     [SerializeField] private GameObject[] couchColors;
 
+    [Header("Audio Clips")]
+    [SerializeField] private AudioClip flipPageClip;
+
     public void SetBookshelveColor(int value)
     {
         switch(value)
         {
             case 0:
+                PlayClickSound();
                 bookshelveColors[1].SetActive(false); 
                 bookshelveColors[0].SetActive(true); 
                 break;
             case 1:
+                PlayClickSound();
                 bookshelveColors[0].SetActive(false);
                 bookshelveColors[1].SetActive(true);
                 break;
@@ -28,22 +33,27 @@ public class FurnitureConstructionLogic : MonoBehaviour
         switch (value)
         {
             case 0:
+                PlayClickSound();
                 DeactivateAllSeats();
                 seatingColors[value].SetActive(true);
                 break;
             case 1:
+                PlayClickSound();
                 DeactivateAllSeats();
                 seatingColors[value].SetActive(true);
                 break;
             case 2:
+                PlayClickSound();
                 DeactivateAllSeats();
                 seatingColors[value].SetActive(true);
                 break;
             case 3:
+                PlayClickSound();
                 DeactivateAllSeats();
                 seatingColors[value].SetActive(true);
                 break;
             case 4:
+                PlayClickSound();
                 DeactivateAllSeats();
                 seatingColors[value].SetActive(true);
                 break;
@@ -55,22 +65,27 @@ public class FurnitureConstructionLogic : MonoBehaviour
         switch (value)
         {
             case 0:
+                PlayClickSound();
                 DeactivateAllCouches();
                 couchColors[value].SetActive(true);
                 break;
             case 1:
+                PlayClickSound();
                 DeactivateAllCouches();
                 couchColors[value].SetActive(true);
                 break;
             case 2:
+                PlayClickSound();
                 DeactivateAllCouches();
                 couchColors[value].SetActive(true);
                 break;
             case 3:
+                PlayClickSound();
                 DeactivateAllCouches();
                 couchColors[value].SetActive(true);
                 break;
             case 4:
+                PlayClickSound();
                 DeactivateAllCouches();
                 couchColors[value].SetActive(true);
                 break;
@@ -91,5 +106,10 @@ public class FurnitureConstructionLogic : MonoBehaviour
         {
             couch.SetActive(false);
         }
+    }
+    private void PlayClickSound()
+    {
+        float randomPitch = Random.Range(0.7f, 1.3f);
+        AudioManager.instance.PlaySoundFXClipRandomPitch(flipPageClip, transform, 1f, randomPitch);
     }
 }

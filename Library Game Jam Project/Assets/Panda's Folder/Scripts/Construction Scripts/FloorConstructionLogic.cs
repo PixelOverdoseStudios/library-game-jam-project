@@ -53,9 +53,13 @@ public class FloorConstructionLogic : MonoBehaviour
     [SerializeField] private GameObject greenDiamondPattern;
     [SerializeField] private GameObject greenWoodPattern;
 
+    [Header("Audio Clips")]
+    [SerializeField] private AudioClip flipPageClip;
 
     public void SetFloorPattern(string floorPatter)
     {
+        float randomPitch = Random.Range(0.7f, 1.3f);
+        AudioManager.instance.PlaySoundFXClipRandomPitch(flipPageClip, transform, 1f, randomPitch);
         DeactivateAllChildGameObjects();
         patternName = floorPatter;
         UpdateFloor();
@@ -63,6 +67,8 @@ public class FloorConstructionLogic : MonoBehaviour
 
     public void SetFloorColor(string floorColor)
     {
+        float randomPitch = Random.Range(0.7f, 1.3f);
+        AudioManager.instance.PlaySoundFXClipRandomPitch(flipPageClip, transform, 1f, randomPitch);
         DeactivateAllChildGameObjects();
         currentColor = floorColor;
         UpdateFloor();
