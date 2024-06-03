@@ -7,27 +7,34 @@ public class WallConstructionLogic : MonoBehaviour
     [SerializeField] private GameObject[] brickLayers;
     [SerializeField] private GameObject[] wallpaperLayers;
 
+    [SerializeField] private AudioClip flipPageClip;
+
     public void SetBrickLayer(int value)
     {
         switch(value)
         {
             case 0:
+                PlayClickSound();
                 DeactivateAllBrickLayers();
                 brickLayers[value].SetActive(true);
                 break;
             case 1:
+                PlayClickSound();
                 DeactivateAllBrickLayers();
                 brickLayers[value].SetActive(true);
                 break;
             case 2:
+                PlayClickSound();
                 DeactivateAllBrickLayers();
                 brickLayers[value].SetActive(true);
                 break;
             case 3:
+                PlayClickSound();
                 DeactivateAllBrickLayers();
                 brickLayers[value].SetActive(true);
                 break;
             case 4:
+                PlayClickSound();
                 DeactivateAllBrickLayers();
                 brickLayers[value].SetActive(true);
                 break;
@@ -39,22 +46,27 @@ public class WallConstructionLogic : MonoBehaviour
         switch (value)
         {
             case 0:
+                PlayClickSound();
                 DeactivateAllWallpaperLayers();
                 wallpaperLayers[value].SetActive(true);
                 break;
             case 1:
+                PlayClickSound();
                 DeactivateAllWallpaperLayers();
                 wallpaperLayers[value].SetActive(true);
                 break;
             case 2:
+                PlayClickSound();
                 DeactivateAllWallpaperLayers();
                 wallpaperLayers[value].SetActive(true);
                 break;
             case 3:
+                PlayClickSound();
                 DeactivateAllWallpaperLayers();
                 wallpaperLayers[value].SetActive(true);
                 break;
             case 4:
+                PlayClickSound();
                 DeactivateAllWallpaperLayers();
                 wallpaperLayers[value].SetActive(true);
                 break;
@@ -75,5 +87,11 @@ public class WallConstructionLogic : MonoBehaviour
         {
             wallpaper.SetActive(false);
         }
+    }
+
+    private void PlayClickSound()
+    {
+        float randomPitch = Random.Range(0.7f, 1.3f);
+        AudioManager.instance.PlaySoundFXClipRandomPitch(flipPageClip, transform, 1f, randomPitch);
     }
 }
