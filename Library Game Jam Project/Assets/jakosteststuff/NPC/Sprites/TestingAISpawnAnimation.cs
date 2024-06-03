@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class TestingAISpawnAnimation : MonoBehaviour
 {
+    [SerializeField] private GameObject membershipAnimation;
     [SerializeField] private Transform animationSpawnLocation;
-    [SerializeField] private GameObject animationToPlay;
 
-    void Update()
+    private void SpawnAnimation()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            Instantiate(animationToPlay, animationSpawnLocation.transform.position, Quaternion.identity);
-        }
+        Instantiate(membershipAnimation, animationSpawnLocation.transform.position, Quaternion.identity);
     }
 }
