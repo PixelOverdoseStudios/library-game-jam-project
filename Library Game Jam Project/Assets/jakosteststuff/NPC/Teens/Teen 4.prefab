@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 433384146418296581}
   - component: {fileID: -3191644510456666422}
   - component: {fileID: 5361218133439752668}
+  - component: {fileID: 7083078663077902805}
   m_Layer: 0
   m_Name: Teen 4
   m_TagString: Untagged
@@ -274,3 +275,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde7f42d7f7cf8d4c9540e47e1f047dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7083078663077902805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6430324817140764607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34afe4ec6000b594bb56f51cf579dd60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationSpawnLocation: {fileID: 537215981067777013}
+  animationToPlay: {fileID: 4868275847478224969, guid: 5c3343be9201af84da01f4ef945025a5, type: 3}

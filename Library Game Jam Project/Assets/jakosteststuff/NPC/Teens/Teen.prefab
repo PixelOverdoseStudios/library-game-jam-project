@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4768848839114415212
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4145599473046334601}
+  m_Layer: 0
+  m_Name: AnimationSpawnLocation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4145599473046334601
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4768848839114415212}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.014, y: 0.246, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 537215981067777013}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6430324817140764607
 GameObject:
   m_ObjectHideFlags: 0
@@ -15,7 +46,6 @@ GameObject:
   - component: {fileID: 433384146418296581}
   - component: {fileID: 7804734817185385542}
   - component: {fileID: 2594507650464558782}
-  - component: {fileID: 2234458556290284337}
   m_Layer: 0
   m_Name: Teen
   m_TagString: Untagged
@@ -33,9 +63,10 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4145599473046334601}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1651416453999581142
@@ -69,7 +100,8 @@ MonoBehaviour:
   teenStarLevel: 0
   adultStarLevel: 0
   elderlyStarLevel: 0
-  SignupCard: {fileID: 0}
+  animationToPlay: {fileID: 4868275847478224969, guid: 5c3343be9201af84da01f4ef945025a5, type: 3}
+  spawnLocation: {fileID: 4145599473046334601}
   signupTable:
   - starLevel: 0
     signupPercentage: 10
@@ -190,17 +222,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde7f42d7f7cf8d4c9540e47e1f047dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2234458556290284337
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6430324817140764607}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34afe4ec6000b594bb56f51cf579dd60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animationSpawnLocation: {fileID: 537215981067777013}
-  animationToPlay: {fileID: 4868275847478224969, guid: 5c3343be9201af84da01f4ef945025a5, type: 3}

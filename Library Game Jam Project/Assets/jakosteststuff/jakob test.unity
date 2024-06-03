@@ -1112,6 +1112,10 @@ PrefabInstance:
       value: ----- MANAGERS -----
       objectReference: {fileID: 0}
     - target: {fileID: 2785415018602051094, guid: 6dcc192d8cd97c24296653a4d8b80dff, type: 3}
+      propertyPath: NextDayButton
+      value: 
+      objectReference: {fileID: 228492014}
+    - target: {fileID: 2785415018602051094, guid: 6dcc192d8cd97c24296653a4d8b80dff, type: 3}
       propertyPath: countdownText
       value: 
       objectReference: {fileID: 1403782404}
@@ -1253,7 +1257,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5886210025574353774, guid: 6dcc192d8cd97c24296653a4d8b80dff, type: 3}
       propertyPath: vistorsPerDay
-      value: 1
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

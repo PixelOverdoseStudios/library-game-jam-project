@@ -7,7 +7,9 @@ public class Choice : MonoBehaviour
     [SerializeField] private int teenStarLevel;
     [SerializeField] private int adultStarLevel;
     [SerializeField] private int elderlyStarLevel;
-    [SerializeField] private GameObject SignupCard;
+    [SerializeField] private GameObject animationToPlay;
+    [SerializeField] private Transform spawnLocation;
+    
 
     [System.Serializable]
     public class SignupEntry
@@ -37,10 +39,7 @@ public class Choice : MonoBehaviour
     {
         randomValue = Random.value * 100;
         // Ensure SignupCard is assigned
-        if (SignupCard == null)
-        {
-            Debug.LogError("SignupCard is not assigned in the Inspector!");
-        }
+        
     }
 
     public void Update()
@@ -51,13 +50,20 @@ public class Choice : MonoBehaviour
         adultStarLevel = LibraryManager.instance.GetAdultStarLevel();
         elderlyStarLevel = LibraryManager.instance.GetElderlyStarLevel();
         }
+      //  if(Input.GetKeyDown(KeyCode.R))
+       // {
+        //    Signup();
+        //}
         
     }
 
     public void ChooseToMake(NpcController.AgeGroup ageGroup)
     {
         int starLevel = GetStarLevel(ageGroup);
+        Debug.Log(ageGroup);
+        Debug.Log(GetStarLevel(ageGroup));
         int signupPercentage = GetSignupPercentage(starLevel);
+        
 
         if (randomValue <= signupPercentage)
         {
@@ -67,7 +73,10 @@ public class Choice : MonoBehaviour
             {
                 IncrementLibraryMembership();
                 hasIncrementedLibrary = true;
-                
+               Signup();
+
+
+
             }
         }
         else
@@ -144,5 +153,10 @@ public class Choice : MonoBehaviour
         }
 
         LibraryManager.instance.IncrementLibraryMemberships();
+    }
+
+    private void Signup()
+    {
+        Instantiate(animationToPlay, spawnLocation.transform.position,Quaternion.identity);
     }
 }
