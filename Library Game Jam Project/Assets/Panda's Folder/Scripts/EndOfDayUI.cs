@@ -17,12 +17,14 @@ public class EndOfDayUI : MonoBehaviour
     void Update()
     {
         endOfDayText.text = "Day " + LibraryManager.instance.GetCurrentDay().ToString() + " Complete!";
-        teensVisited.text = "0001";
-        adultsVisited.text = "0001";
-        elderlyVisited.text = "0001";
+        
         teensGained.text = SignupManager.instance.GetTeenSignups().ToString("0000");
         adultsGained.text = SignupManager.instance.GetAdultSignups().ToString("0000");
         elderlyGained.text = SignupManager.instance.GetElderlySignups().ToString("0000");
-        membershipsGained.text = "0001";
+        teensVisited.text = SpawnPoint.Instance.GetSpawnedTeens().ToString("0000");
+        adultsVisited.text = SpawnPoint.Instance.GetSpawnedAdults().ToString("0000");
+        elderlyVisited.text = SpawnPoint.Instance.GetSpawnedElderly().ToString("0000");
+
+        membershipsGained.text = SignupManager.instance.GetMemberShipsGain().ToString("0000");
     }
 }

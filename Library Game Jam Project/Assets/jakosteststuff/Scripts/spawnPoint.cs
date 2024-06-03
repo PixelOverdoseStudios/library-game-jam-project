@@ -21,6 +21,8 @@ public class SpawnPoint : MonoBehaviour
     [SerializeField] private int spawnedElderly = 0;
     private float spawnTime;
 
+    public static object instance { get; internal set; }
+
     // Awake is called when the script instance is being loaded
     private void Awake()
     {
@@ -151,10 +153,17 @@ public class SpawnPoint : MonoBehaviour
         despawnedCount = 0;
         
     }
+    private void ResetNumberSpawned()
+    {
+        spawnedTeens = 0;
+        spawnedAdults = 0;
+        spawnedAdults = 0;
+    }
     public int GetNumberOfObjectsToSpawn() => numberOfObjectsToSpawn;
     public int GetSpawnedTeens() => spawnedTeens;
     public int GetSpawnedAdults() => spawnedAdults;
     public int GetSpawnedElderly() => spawnedElderly;
+    public void ResetSpawns() => ResetNumberSpawned();
 
     
     

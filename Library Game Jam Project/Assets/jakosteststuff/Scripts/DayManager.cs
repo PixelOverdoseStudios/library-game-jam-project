@@ -106,6 +106,7 @@ public class DayManager : MonoBehaviour
         SignupManager.instance.resetSignup();
        NextDayButton.SetActive(false);
         LibraryManager.instance.IncrementCurrentday();
+        SpawnPoint.Instance.ResetSpawns();
     }
     private void ShowEndOfDayWindow()
     {

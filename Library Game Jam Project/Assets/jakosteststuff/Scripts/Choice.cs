@@ -67,16 +67,7 @@ public class Choice : MonoBehaviour
             {
                 IncrementLibraryMembership();
                 hasIncrementedLibrary = true;
-                if (SignupCard != null)
-                {
-                   
-                   // SignupCard.SetActive(true);
-                    
-                }
-                else
-                {
-                    Debug.LogError("SignupCard is not assigned!");
-                }
+                
             }
         }
         else

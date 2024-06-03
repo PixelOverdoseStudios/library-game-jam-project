@@ -136,7 +136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pathTag: Path
   waitTimeAtWaypoint: 1
-  moveSpeed: 1
+  moveSpeed: 4
 --- !u!114 &5741673356542524900
 MonoBehaviour:
   m_ObjectHideFlags: 0
