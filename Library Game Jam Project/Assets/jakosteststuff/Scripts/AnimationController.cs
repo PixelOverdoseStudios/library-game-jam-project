@@ -42,21 +42,21 @@ public class AnimationController : MonoBehaviour
             case 0:
             case 1:
             case 7:
-                Debug.Log("Right");
+                
                 animator.SetInteger("Direction", 1); // Right
                 break;
             case 2:
             case 3:
-                Debug.Log("Up");
+                
                 animator.SetInteger("Direction", 3); // Up
                 break;
             case 4:
-                Debug.Log("Left");
+                
                 animator.SetInteger("Direction", 2); // Left
                 break;
             case 5:
             case 6:
-                Debug.Log("Down");
+                
                 animator.SetInteger("Direction", 4); // Down
                 break;
         }
