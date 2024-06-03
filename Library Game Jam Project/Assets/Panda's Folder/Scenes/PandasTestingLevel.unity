@@ -404,7 +404,7 @@ Transform:
   m_GameObject: {fileID: 346763373}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.35, y: -0.7, z: 0}
+  m_LocalPosition: {x: 5.41, y: -2.36, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -423,7 +423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34afe4ec6000b594bb56f51cf579dd60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  membershipAnimation: {fileID: 4868275847478224969, guid: 5c3343be9201af84da01f4ef945025a5, type: 3}
+  membershipAnimation: {fileID: 420564896648500707, guid: 7b06a24a04fdea54bafaa95af063e66d, type: 3}
   animationSpawnLocation: {fileID: 1299573937}
 --- !u!1 &575036156
 GameObject:
