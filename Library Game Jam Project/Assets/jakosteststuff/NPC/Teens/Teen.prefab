@@ -100,7 +100,7 @@ MonoBehaviour:
   teenStarLevel: 0
   adultStarLevel: 0
   elderlyStarLevel: 0
-  animationToPlay: {fileID: 4868275847478224969, guid: 5c3343be9201af84da01f4ef945025a5, type: 3}
+  animationToPlay: {fileID: 420564896648500707, guid: 7b06a24a04fdea54bafaa95af063e66d, type: 3}
   spawnLocation: {fileID: 4145599473046334601}
   signupTable:
   - starLevel: 0
